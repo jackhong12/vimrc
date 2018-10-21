@@ -12,11 +12,11 @@
 >> `touch ~/.ssh/authorized_keys`  
 >> `chmod 700 ~/.ssh`  
 >> `chmod 600 ~/.ssh/authorized_keys`  
-> c.Setting Git
->> 設定user.name & user.email
+> c.Setting Git  
+>> 設定user.name & user.email  
 >> `git config --global user.name YourName`  
 >> `git config --global user.email YourEmail`  
->> 設定 Git 預設編輯器為 vim
+>> 設定 Git 預設編輯器為 vim  
 >> `git config --global core.editor vim`  
 >> ??
 >> `git config --global push.default simple`  

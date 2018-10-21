@@ -28,6 +28,15 @@ Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 Plugin 'file:///home/gmarik/path/to/plugin'
 " ...
+"
+" @Plugin Nerd Commenter
+Plugin 'scrooloose/nerdcommenter'
+
+" @Plugin Vim-Airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" This is disabled by default; add the following to your vimrc to enable the extension:
+let g:airline#extensions#tabline#enabled = 1
 
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 " To ignore plugin indent changes, instead use:
@@ -79,18 +88,20 @@ set backspace=2
 set history=100
 " >在關鍵字尚未完全輸入完畢前就顯示結果 (ctrl+n)???
 set incsearch 
+" >setting folding
+set foldmethod=indent
 
 " #Key Mapping
 " >輸入 ( 自動產生 ()
-inoremap( ()<Esc>i
+"inoremap( ()<Esc>i
 " >輸入 " 自動產生 ""
 "inoremap" ""<Esc>i"
 " >輸入 ' 自動產生 ''
 "inoremap' ''<Esc>i"
 " >輸入 [ 自動產生 []
-inoremap[ []<Esc>i
+"inoremap[ []<Esc>i
 " >輸入 {{ 自動產生 {}
-inoremap{{ {}<Esc>i
+"inoremap{{ {}<Esc>i
 " >輸入 { + Enter 自動產生 { Enter } 
 inoremap{<CR> {<CR>}<Esc>ko
 
@@ -104,7 +115,7 @@ set mouse=a
 " >設定程式語法高亮功能 syntax <on/enable, off>
 syntax on 
 " >colorsheme <default, koehler, darkblue, desert, shine, ron, torte>
-"colo default 
+colo desert 
 " >顯示游標所在列
 set cursorline
 " >cursorline 效果     文字變化: cterm <none, underline, blod, reverse>		背景顏色: ctermbg	前景顏色: ctermfg	
