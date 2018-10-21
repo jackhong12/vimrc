@@ -16,9 +16,9 @@
 >> <bar>
 >> `chmod 600 ~/.ssh/authorized_keys`
 >> 設定user.name & user.email
->> `git config --global user.name YourName`
->> `git config --global user.email YourEmail`
+>>> `git config --global user.name YourName`
+>>> `git config --global user.email YourEmail`
 >> 設定 Git 預設編輯器為 vim
->> `git config --global core.editor vim`
+>>> `git config --global core.editor vim`
 >> ??
->> `git config --global push.default simple`
+>>> `git config --global push.default simple`
