@@ -8,23 +8,15 @@
 >> `sudo apt-get update && sudo apt-get upgrade`
 > 
 > b.建立 SSH 金鑰組
->> *`ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/id_rsa -P ""`
->> *`touch ~/.ssh/authorized_keys`
->> *`chmod 700 ~/.ssh`
->> *`chmod 600 ~/.ssh/authorized_keys`
+>> `ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/id_rsa -P ""`  
+>> `touch ~/.ssh/authorized_keys`  
+>> `chmod 700 ~/.ssh`  
+>> `chmod 600 ~/.ssh/authorized_keys`  
+> c.Setting Git
 >> 設定user.name & user.email
-<<<<<<< HEAD
->> *`git config --global user.name YourName`
->> *`git config --global user.email YourEmail`
+>> `git config --global user.name YourName`  
+>> `git config --global user.email YourEmail`  
 >> 設定 Git 預設編輯器為 vim
->> *`git config --global core.editor vim`
+>> `git config --global core.editor vim`  
 >> ??
->> *`git config --global push.default simple`
-=======
->>> `git config --global user.name YourName`
->>> `git config --global user.email YourEmail`
->> 設定 Git 預設編輯器為 vim
->>> `git config --global core.editor vim`
->> ??
->>> `git config --global push.default simple`
->>>>>>> 6ad3d08efdfe7862c6feffa31e22fc4cd26d5b3f
+>> `git config --global push.default simple`  
