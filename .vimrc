@@ -1,6 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -32,9 +33,16 @@ Plugin 'file:///home/gmarik/path/to/plugin'
 " @Plugin Nerd Commenter
 Plugin 'scrooloose/nerdcommenter'
 
+" -------------------------------------------------------------------------------------------------
 " @Plugin Vim-Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" set Airline theme
+let g:airline_theme='simple'
+
+let g:airline_powerline_fonts=1
+
 " This is disabled by default; add the following to your vimrc to enable the extension:
 let g:airline#extensions#tabline#enabled = 1
 
@@ -57,6 +65,7 @@ Plugin 'scrooloose/nerdtree'
 " >NERDTree <F5> 快捷鍵開關
 map <F5> :NERDTreeToggle<CR>
 
+"map <F5> :ls<CR>
 " #YouCompleteMe
 Plugin 'Valloric/YouCompleteMe'
 " > .vimrc 讀入 .ycm_extra_conf.py
@@ -66,7 +75,7 @@ let g:ycm_global_extra_conf = 0
 "set nocompatible
 "filetype plugin indent on
 
-
+" -------------------------------------------------------------------------------------------------
 " #vim 基本功能
 " >顯示行號
 set number 
@@ -129,3 +138,8 @@ set completeopt-=preview
 set background=dark
 set t_Co=256
 set backspace=indent,eol,start
+
+map <F3> :tabp<CR>
+map <F4> :tabn<CR>
+map <F6> :make<CR>
+map <F7> :make run<CR>
