@@ -116,7 +116,7 @@ inoremap{<CR> {<CR>}<Esc>ko
 
 " #游標選取
 " >開啟游標		v(選取字元)	ctrl+insert(複製)	shift+insert(貼上)
-set mouse=a
+set mouse=r
 " >停用游標
 "set mouse=""
 
