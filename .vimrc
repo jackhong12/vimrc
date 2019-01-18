@@ -27,16 +27,20 @@ Plugin 'FuzzyFinder'
 " " scripts not on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
+"Plugin 'file:///home/gmarik/path/to/plugin'
 " ...
 "
 " @Plugin Nerd Commenter
 Plugin 'scrooloose/nerdcommenter'
 
-" -------------------------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------------------------
 " @Plugin Vim-Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+"-------------------------------------------------------------------------------------------------
+" Plugin ctrlP
+Plugin 'kien/ctrlp.vim'
 
 " set Airline theme
 let g:airline_theme='simple'
