@@ -12,6 +12,9 @@ call vundle#rc()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/vundle'
 
+Plugin 'suan/vim-instant-markdown'
+
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
 " scripts on GitHub repos
@@ -39,16 +42,26 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 "-------------------------------------------------------------------------------------------------
+" Plugin tagbar 
+Plugin 'majutsushi/tagbar'
+nmap <F8> :TagbarToggle<CR>
+
+"-------------------------------------------------------------------------------------------------
 " Plugin ctrlP
 Plugin 'kien/ctrlp.vim'
 
+"-------------------------------------------------------------------------------------------------
+" Plugin gruvbox
+Plugin 'morhetz/gruvbox'
+
+
 " set Airline theme
 let g:airline_theme='simple'
-
+"let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts=1
 
 " This is disabled by default; add the following to your vimrc to enable the extension:
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 " To ignore plugin indent changes, instead use:
@@ -63,6 +76,11 @@ filetype plugin indent on     " required (根據檔案類型決定自動縮台�
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Plugin commands are not allowed.
 " Put your stuff after this line
+
+"-------------------------------------------------------------------------------------------------
+" Plugin vim tools
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " #NERDTree 
 Plugin 'scrooloose/nerdtree'
@@ -81,8 +99,9 @@ let g:ycm_global_extra_conf = 0
 
 " -------------------------------------------------------------------------------------------------
 " #vim 基本功能
-" >顯示行號
-set number 
+" >顯示行號 number relativenumber
+set number
+set relativenumber 
 " >自動縮排
 set ai
 " >縮排間隔數<tab>
@@ -126,9 +145,12 @@ set mouse=r
 
 " #背景風格
 " >設定程式語法高亮功能 syntax <on/enable, off>
+set t_Co=256
 syntax on 
 " >colorsheme <default, koehler, darkblue, desert, shine, ron, torte>
-colo desert 
+" colo desert 
+"colorsheme gruvbox
+
 " >顯示游標所在列
 set cursorline
 " >cursorline 效果     文字變化: cterm <none, underline, blod, reverse>		背景顏色: ctermbg	前景顏色: ctermfg	
@@ -140,7 +162,6 @@ set cursorline
 
 set completeopt-=preview
 set background=dark
-set t_Co=256
 set backspace=indent,eol,start
 
 map <F3> :tabp<CR>
