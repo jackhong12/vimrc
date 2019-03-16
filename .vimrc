@@ -41,6 +41,13 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+" set Airline theme
+" github.com/vim-airline/vim-airline-themes
+" good theme: ayu_mirage badwolf dark_minimal qwq term soda
+let g:airline_theme='term'
+" let g:airline_symbols
+let g:airline_powerline_fonts=1
+
 "-------------------------------------------------------------------------------------------------
 " Plugin tagbar 
 Plugin 'majutsushi/tagbar'
@@ -54,11 +61,6 @@ Plugin 'kien/ctrlp.vim'
 " Plugin gruvbox
 Plugin 'morhetz/gruvbox'
 
-
-" set Airline theme
-let g:airline_theme='simple'
-"let g:airline_theme = 'gruvbox'
-let g:airline_powerline_fonts=1
 
 " This is disabled by default; add the following to your vimrc to enable the extension:
 "let g:airline#extensions#tabline#enabled = 1
@@ -119,9 +121,22 @@ set backspace=2
 " >保留100個使用過指令
 set history=100
 " >在關鍵字尚未完全輸入完畢前就顯示結果 (ctrl+n)???
-set incsearch 
-" >setting folding
-set foldmethod=indent
+set incsearch
+" >搜尋反白
+set hlsearch
+" >搜尋完後關掉反白
+"set nohlsearch
+
+" >disable folding
+set nofoldenable
+" >setting folding 
+set foldmethod=indent 
+
+" mapping <F9> to create a fold
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
 
 " #Key Mapping
 " >輸入 ( 自動產生 ()
@@ -144,8 +159,47 @@ set mouse=r
 "set mouse=""
 
 " #背景風格
+" for powerline
+set laststatus=2
 " >設定程式語法高亮功能 syntax <on/enable, off>
 set t_Co=256
+
+"---------------------------------------------------------------------------
+" for powerline
+" :help airline-customization
+set encoding=utf-8
+set rtp+=/home/hong/.local/lib/python3.6/site-packages/powerline/bindings/vim
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+
+" powerline extension
+let g:airline#extensions#tabline#enabled = 2
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+let g:airline#parts#ffenc#skip_expected_string='utf-8'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.linenr = '-'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = ''
+
 syntax on 
 " >colorsheme <default, koehler, darkblue, desert, shine, ron, torte>
 " colo desert 
@@ -166,5 +220,5 @@ set backspace=indent,eol,start
 
 map <F3> :tabp<CR>
 map <F4> :tabn<CR>
-map <F6> :make<CR>
-map <F7> :make run<CR>
+map <F6> ?<CR>
+map <F7> /<CR>
