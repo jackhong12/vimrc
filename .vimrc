@@ -38,27 +38,31 @@ Plugin 'scrooloose/nerdcommenter'
 
 "-------------------------------------------------------------------------------------------------
 " @Plugin Vim-Airline
+"-------------------------------------------------------------------------------------------------
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 " set Airline theme
 " github.com/vim-airline/vim-airline-themes
 " good theme: ayu_mirage badwolf dark_minimal qwq term soda
-let g:airline_theme='term'
+let g:airline_theme='badwolf'
 " let g:airline_symbols
 let g:airline_powerline_fonts=1
 
 "-------------------------------------------------------------------------------------------------
 " Plugin tagbar 
+"-------------------------------------------------------------------------------------------------
 Plugin 'majutsushi/tagbar'
 nmap <F8> :TagbarToggle<CR>
 
 "-------------------------------------------------------------------------------------------------
 " Plugin ctrlP
+"-------------------------------------------------------------------------------------------------
 Plugin 'kien/ctrlp.vim'
 
 "-------------------------------------------------------------------------------------------------
 " Plugin gruvbox
+"-------------------------------------------------------------------------------------------------
 Plugin 'morhetz/gruvbox'
 
 
@@ -80,11 +84,25 @@ filetype plugin indent on     " required (根據檔案類型決定自動縮台�
 " Put your stuff after this line
 
 "-------------------------------------------------------------------------------------------------
-" Plugin vim tools
+" Plugin godlygeek/tabular
+" 表格排版
+"-------------------------------------------------------------------------------------------------
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'cespare/vim-toml'
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter=1    " LaTeX math
 
+"-------------------------------------------------------------------------------------------------
+" Plugin 
+" 表格排版
+"-------------------------------------------------------------------------------------------------
+Plugin 'Chiel92/vim-autoformat'
+
+
+"-------------------------------------------------------------------------------------------------
 " #NERDTree 
+"-------------------------------------------------------------------------------------------------
 Plugin 'scrooloose/nerdtree'
 " >NERDTree <F5> 快捷鍵開關
 map <F5> :NERDTreeToggle<CR>
@@ -101,6 +119,10 @@ let g:ycm_global_extra_conf = 0
 
 " -------------------------------------------------------------------------------------------------
 " #vim 基本功能
+"-------------------------------------------------------------------------------------------------
+set ft=tex
+set syntax=markdown
+
 " >顯示行號 number relativenumber
 set number
 set relativenumber 
@@ -110,8 +132,10 @@ set ai
 set tabstop=4
 " >自動縮排對齊間隔數
 set shiftwidth=4
+" >一行字數限制
+set tw=100
 " >輸入 tab 自動轉換成 space
-"set expandtab
+set expandtab
 " >右下角顯示 	行，列 目前在文件位置% （預設模式）
 set ruler
 " >在 insert 模式啟用 blackspace (預設模式)
@@ -191,11 +215,11 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.branch = ''
+let g:airline_symbols.branch = '✎'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.linenr = '-'
+let g:airline_symbols.linenr = '➣'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = ''
