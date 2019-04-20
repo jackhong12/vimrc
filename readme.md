@@ -6,47 +6,46 @@ Vundle Setteing
 ## 1. Install Vundle
     sudo apt-get install git curl
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-    
-#### plugin 安裝
-    vim +PluginInstall +qall  
-    將 .ycm_extra_conf.py 移到 .vim
 
+#### plugin 安裝
+    vim +PluginInstall +qall
 
 
 ## 2. [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
 #### 自動補全
 
-`sudo apt-get install build-essential cmake`  
-`sudo apt-get install python-dev`  
-`cd ~/.vim/bundle/YouCompleteMe` 移到其他資料夾  
+`sudo apt-get install build-essential cmake`
+`sudo apt-get install python-dev`
+`sudo apt install python3-pip`  
+`cd ~/.vim/bundle/YouCompleteMe` 移到其他資料夾
 
-##### C family補全  
-`./install.sh --clang-completer`  
+##### C family補全
+`./install.sh --clang-completer`
 
-##### 不需要C family補全i  
-`./install.sh`  
+##### 不需要C family補全i
+`./install.sh`
 
 ##### 更新python
-`~/.vim/bundle/YouCompleteMeinstall.py`  
-`sudo apt install build-essential cmake python3-dev`  
+`~/.vim/bundle/YouCompleteMeinstall.py`
+`sudo apt install build-essential cmake python3-dev`
 
 
 
-## 3. [NERD Commenter](https://github.com/scrooloose/nerdcommenter)  
+## 3. [NERD Commenter](https://github.com/scrooloose/nerdcommenter)
 
-- Comment functions so powerful—no comment necessary.  
-#### add in .vimrc  
-`Plugin 'scrooloose/nerdcommenter'`  
- 
+- Comment functions so powerful—no comment necessary.
+#### add in .vimrc
+`Plugin 'scrooloose/nerdcommenter'`
+
 
 <br>
 
-## 4. [Vim-Airline](https://github.com/vim-airline/vim-airline)  
+## 4. [Vim-Airline](https://github.com/vim-airline/vim-airline)
 
-- Lean & mean status/tabline for vim that's light as air.  
+- Lean & mean status/tabline for vim that's light as air.
 
-#### add in .vimrc  
+#### add in .vimrc
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
 
