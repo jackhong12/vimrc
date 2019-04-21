@@ -41,8 +41,9 @@ POWERLEVEL9K_STATUS_OK_FOREGROUND='green'
 # vi-mode color
 POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='green'
 
-# User configuration
 
+# zsh-autosuggest to acommplish by using ','
+bindkey ',' autosuggest-accept 
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -56,12 +57,21 @@ POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='green'
 #   export EDITOR='mvim'
 
 # plugins
+# colored-man-pages: adds colors to manpages
+# colorize: cat with syntax highlight support
 plugins=(
     git
     zsh-autosuggestions   
     autojump
     zsh-syntax-highlighting
     vi-mode
+    git-open
+    history
+    colored-man-pages
+    colorize
+    web-search
+    dirhistory
+    extract
 )
 
 source $ZSH/oh-my-zsh.sh fi
@@ -78,6 +88,8 @@ source $ZSH/oh-my-zsh.sh fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# history format
+HIST_STAMPS="yyyy-mm-dd"
 
 #
 #[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
@@ -112,3 +124,4 @@ fi
 export ANDROID_HOME=/home/user_directory/Android/Sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
