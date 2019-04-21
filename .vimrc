@@ -87,9 +87,13 @@ set t_Co=256
 
 
 syntax on 
+" show all theme: $ ls /usr/share/vim/vim80/colors
 " >colorsheme <default, koehler, darkblue, desert, shine, ron, torte>
-" colo desert 
-"colorsheme gruvbox
+"colo desert 
+
+let g:rehash256 = 1
+colorscheme molokai
+"colorscheme wombat256mod
 
 " >顯示游標所在列
 set cursorline
