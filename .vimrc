@@ -92,8 +92,10 @@ syntax on
 "colo desert 
 
 let g:rehash256 = 1
-colorscheme molokai
+colorscheme molokai 
 "colorscheme wombat256mod
+
+
 
 " >顯示游標所在列
 set cursorline
@@ -119,6 +121,7 @@ map <F7> /<CR>
 "------------------------------------------------
 " 在網頁顯示markdown
 Plugin 'suan/vim-instant-markdown'
+let g:instant_markdown_allow_external_content = 1
 
 "------------------------------------------------
 " 在vim 中使用 git 指令
@@ -133,10 +136,10 @@ Plugin 'Lokaltog/vim-easymotion'
 
 "------------------------------------------------
 " Markdown plugin
-"Plugin 'plasticboy/vim-markdown'
-"Plugin 'cespare/vim-toml'
-"let g:vim_markdown_toml_frontmatter = 1
-"let g:vim_markdown_frontmatter=1    " LaTeX math
+Plugin 'plasticboy/vim-markdown'
+Plugin 'cespare/vim-toml'
+let g:vim_markdown_toml_frontmatter = 1
+let g:vim_markdown_frontmatter=1    " LaTeX math
 
 
 "------------------------------------------------
@@ -226,3 +229,13 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
 Plugin 'morhetz/gruvbox'
+
+
+" marokai set
+hi Normal         ctermfg=254   ctermbg=none
+hi CursorLine                   ctermbg=none  cterm=underline
+hi CursorLineNr   ctermfg=208   ctermbg=none  cterm=bold
+hi LineNr         ctermfg=245   ctermbg=none  cterm=none
+" 括號顏色
+hi MatchParen     ctermfg=161   ctermbg=254   cterm=bold
+

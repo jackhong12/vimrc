@@ -13,6 +13,7 @@ export ZSH=$HOME/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # show all theme $ ls ~/.oh-my-zsh/themes
+#
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
@@ -30,7 +31,7 @@ POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\uE0B2'
 # fonts
 POWERLEVEL9K_MODE='awesome-fontconfig'
 # vcs color
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='lightgreen'
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND='green'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='red1'
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
@@ -42,8 +43,6 @@ POWERLEVEL9K_STATUS_OK_FOREGROUND='green'
 POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='green'
 
 
-# zsh-autosuggest to acommplish by using ','
-bindkey ',' autosuggest-accept 
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -109,6 +108,8 @@ alias keymd='atom ~/hong/github/my-hot-key'
 alias dnyt='youtube-dl -x --audio-format mp3 --embed-thumbnail --add-metadata'
 alias gd='cd ~/hong/gd'
 alias mars='java ~/hong/Mars4_5/Mars.java'
+alias arduino='~/arduino-1.8.9/arduino'
+alias labelImg='python3 ~/tool/labelImg/labelImg.py'
 
 
 # powerline
@@ -125,3 +126,17 @@ export ANDROID_HOME=/home/user_directory/Android/Sdk
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 
+# MQTT
+export GOOGLE_APPLICATION_CREDENTIALS="~/Downloads/MQTT-connect-cd88eafc2a63.json"
+
+# zsh-autosuggest to acommplish by using ','
+bindkey ',' autosuggest-accept 
+
+
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jack/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/home/jack/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/jack/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/home/jack/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
