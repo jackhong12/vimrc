@@ -9,6 +9,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
+set smartindent
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -55,6 +56,9 @@ set clipboard=unnamedplus " 複製到系統剪貼簿上
 set nofoldenable        " disable folding
 set foldmethod=indent   " setting folding 
 
+" html
+let g:html_indent_inctags = "html,body,head,tbody"
+
 
 " mapping key
 "------------------------------------------------
@@ -63,6 +67,7 @@ inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
+imap jk <ESC>
 
 " #Key Mapping
 "inoremap( ()<Esc>i     " 輸入 ( 自動產生 ()
@@ -119,6 +124,10 @@ map <F7> /<CR>
 "================================================
 
 "------------------------------------------------
+" html javascript
+Plugin 'maksimr/vim-jsbeautify'
+
+"------------------------------------------------
 " 在網頁顯示markdown
 Plugin 'suan/vim-instant-markdown'
 let g:instant_markdown_allow_external_content = 1
@@ -141,6 +150,9 @@ Plugin 'cespare/vim-toml'
 let g:vim_markdown_toml_frontmatter = 1
 let g:vim_markdown_frontmatter=1    " LaTeX math
 
+"------------------------------------------------
+" git diff
+Plugin 'airblade/vim-gitgutter'
 
 "------------------------------------------------
 " 代碼格式
