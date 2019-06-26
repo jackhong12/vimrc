@@ -57,7 +57,7 @@ set nofoldenable        " disable folding
 set foldmethod=indent   " setting folding 
 
 " html
-let g:html_indent_inctags = "html,body,head,tbody"
+autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 
 " mapping key
