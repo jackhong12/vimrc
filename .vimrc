@@ -49,7 +49,7 @@ set history=100         " 保留100個使用過指令
 set incsearch           " 在關鍵字尚未完全輸入完畢前就顯示結果 (ctrl+n)???
 
 set hlsearch            " 搜尋反白
-"set nohlsearch         " 搜尋完後關掉反白
+set nohlsearch         " 搜尋完後關掉反白
 set clipboard=unnamedplus " 複製到系統剪貼簿上
 
 
@@ -117,8 +117,6 @@ set backspace=indent,eol,start
 
 map <F3> :tabp<CR>
 map <F4> :tabn<CR>
-map <F6> ?<CR>
-map <F7> /<CR>
 
 " Plugins
 "================================================
@@ -126,11 +124,23 @@ map <F7> /<CR>
 "------------------------------------------------
 " html javascript
 Plugin 'maksimr/vim-jsbeautify'
+".vimrc
+"map <c-f> :call JsBeautify()<cr>
+" or
+"autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+"autocmd FileType json noremap <buffer> <c-f> :call JsonBeautify()<cr>
+" for jsx
+"autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" for html
+"autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+"autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 "------------------------------------------------
 " 在網頁顯示markdown
-Plugin 'suan/vim-instant-markdown'
-let g:instant_markdown_allow_external_content = 1
+"Plugin 'suan/vim-instant-markdown'
+"let g:instant_markdown_allow_external_content = 1
 
 "------------------------------------------------
 " 在vim 中使用 git 指令
@@ -138,7 +148,12 @@ Plugin 'tpope/vim-fugitive'
 
 "------------------------------------------------
 " 在vim 中快速移動
-Plugin 'Lokaltog/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
+map ; <Plug>(easymotion-prefix)
+map ;h <Plug>(easymotion-b)
+map ;j <Plug>(easymotion-j)
+map ;k <Plug>(easymotion-k)
+map ;l <Plug>(easymotion-w)
 
 " A parser for condensed HTML format
 "Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -162,6 +177,7 @@ Plugin 'airblade/vim-gitgutter'
 " Plugin airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
 
 " for powerline
 " :help airline-customization
@@ -193,7 +209,7 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.branch = '✎'
+let g:airline_symbols.branch = ''
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.spell = 'Ꞩ'
@@ -232,15 +248,15 @@ Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
-nmap <F8> :TagbarToggle<CR>
+nmap <F6> :TagbarToggle<CR>
 
-Plugin 'tpope/vim-rails.git'
+" for ruby and rail
+"Plugin 'tpope/vim-rails.git'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'kien/ctrlp.vim'
-Plugin 'morhetz/gruvbox'
 
 
 " marokai set
