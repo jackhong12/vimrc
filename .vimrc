@@ -41,7 +41,7 @@ python3 del powerline_setup
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 set encoding=utf-8
-"let g:airline_theme='badwolf'
+let g:airline_theme='badwolf'
 "let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
@@ -84,10 +84,11 @@ nnoremap <leader>h :bprevious<cr>
 syntax on
 set laststatus=2
 set t_Co=256
+let g:rehash256=1
 
 " >colorsheme <default, koehler, darkblue, desert, shine, ron, torte>
-colorscheme ron 
-"colorscheme monokai
+"colorscheme ron 
+colorscheme molokai 
 
 " marokai set
 hi Normal         ctermfg=254   ctermbg=none
