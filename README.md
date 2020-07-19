@@ -1,5 +1,17 @@
 This repository is used to store my setting files of the vim. The configuration of the file ".vimrc-lite" only contains the basic features supported by vim. In the file ".vimrc", I use [vundle](https://github.com/VundleVim/Vundle.vim) to manage the other plugins.
 
+## Files in This Repository
+```
+./
+├── color           color scheme
+├── config          configuration files for plugins
+├── img
+├── manual
+│   ├── basic       some notes for using basic features in vim
+│   └── plugins     some notes for using plugins
+└── README.md
+```
+
 ## Plugins Used in .vimrc
 - [godlygeek/tabular](https://github.com/godlygeek/tabular)
     - To align table automatically
