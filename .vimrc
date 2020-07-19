@@ -10,8 +10,8 @@ Plugin 'gmarik/vundle'
 
 Plugin 'godlygeek/tabular'
 
-"Plugin 'preservim/nerdtree'
-"map <C-i> :NERDTreeToggle<CR>
+Plugin 'preservim/nerdtree'
+map <C-i> :NERDTreeToggle<CR>
 
 "Plugin 'plasticboy/vim-markdown'
 "let g:vim_markdown_math = 1
