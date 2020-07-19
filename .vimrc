@@ -64,6 +64,10 @@ set incsearch
 set hlsearch
 set nohlsearch
 
+" folding
+set foldmethod=syntax
+set nofoldenable
+
 " last time position
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif

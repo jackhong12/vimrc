@@ -21,3 +21,7 @@ imap kj <ESC>
 syntax on
 set t_Co=256
 
+" folding
+set foldmethod=syntax
+set nofoldenable
+
