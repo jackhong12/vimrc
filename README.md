@@ -1,5 +1,12 @@
 This repository is used to store my setting files of the vim. The configuration of the file ".vimrc-lite" only contains the basic features supported by vim. In the file ".vimrc", I use [vundle](https://github.com/VundleVim/Vundle.vim) to manage the other plugins.
 
+
+## Installation
+```
+$ git clone https://github.com/jackhong12/my_vimrc.git ~/my_vimrc
+$ sudo sh ~/my_vimrc/start.sh
+```
+
 ## Files in This Repository
 ```
 ./
