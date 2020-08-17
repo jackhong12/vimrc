@@ -14,3 +14,6 @@ sudo npm -g install instant-markdown-d -y
 
 # for Plugin 'vim-airline/vim-airline'
 sudo apt-get install fonts-powerline
+
+# copyclip
+sudo apt-get install vim-gnome -y
