@@ -25,9 +25,9 @@ Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 
 Plugin 'airblade/vim-gitgutter'
 
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled = 1
-let g:instant_markdown_autostart=0
+"Plugin 'plasticboy/vim-markdown'
+"let g:vim_markdown_folding_disabled = 1
+"let g:instant_markdown_autostart=0
 
 Plugin 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['┊']
@@ -80,6 +80,11 @@ nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>t :term<cr><c-w><s-j>
 nnoremap <leader>l :bNext<cr>
 nnoremap <leader>h :bprevious<cr>
+
+" airline 
+nnoremap <F2> :bp<cr>
+nnoremap <F3> :bn<cr>
+
 
 " color setting
 syntax on
