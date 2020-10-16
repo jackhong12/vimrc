@@ -47,8 +47,6 @@ filetype plugin indent on     " required (根據檔案類型決定自動縮台�
 
 set number
 set ai
-set tabstop=4
-set shiftwidth=4
 set expandtab
 
 set cursorline
@@ -66,6 +64,13 @@ set nofoldenable
 " only for c and c++ file
 if &filetype ==# 'c' || &filetype ==# 'cpp' || &filetype ==# 'h' || &filetype ==# 'hpp' 
     set tw=80
+endif
+
+set tabstop=4
+set shiftwidth=4
+if &filetype ==# 'launch' || &filetype ==# 'xml'
+    set tabstop=2
+    set shiftwidth=2
 endif
 
 " last time position
