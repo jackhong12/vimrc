@@ -63,6 +63,11 @@ set nohlsearch
 set foldmethod=syntax
 set nofoldenable
 
+" only for c and c++ file
+if &filetype ==# 'c' || &filetype ==# 'cpp' || &filetype ==# 'h' || &filetype ==# 'hpp' 
+    set tw=80
+endif
+
 " last time position
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
