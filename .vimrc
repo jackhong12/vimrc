@@ -33,7 +33,6 @@ Plugin 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['┊']
 let g:indentLine_color_term = 239
 
-
 "set showtabline=2 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -50,7 +49,6 @@ set number
 set ai
 set tabstop=4
 set shiftwidth=4
-set tw=80
 set expandtab
 
 set cursorline
@@ -106,3 +104,6 @@ hi CursorLineNr   ctermfg=208   ctermbg=none  cterm=bold
 hi LineNr         ctermfg=245   ctermbg=none  cterm=none
 " 括號顏色
 hi MatchParen     ctermfg=161   ctermbg=254   cterm=bold
+
+" launch file
+au! BufNewFile,BufRead *.launch setf xml
