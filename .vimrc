@@ -33,7 +33,7 @@ Plugin 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['┊']
 let g:indentLine_color_term = 239
 
-"set showtabline=2 
+"set showtabline=2
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 set encoding=utf-8
@@ -61,7 +61,7 @@ set foldmethod=syntax
 set nofoldenable
 
 " only for c and c++ file
-if &filetype ==# 'c' || &filetype ==# 'cpp' || &filetype ==# 'h' || &filetype ==# 'hpp' 
+if &filetype ==# 'c' || &filetype ==# 'cpp' || &filetype ==# 'h' || &filetype ==# 'hpp'
     set tw=80
 endif
 
@@ -89,7 +89,7 @@ nnoremap <leader>t :term<cr><c-w><s-j>
 nnoremap <leader>l :bNext<cr>
 nnoremap <leader>h :bprevious<cr>
 
-" airline 
+" airline
 nnoremap <F2> :bp<cr>
 nnoremap <F3> :bn<cr>
 
@@ -101,8 +101,8 @@ set t_Co=256
 let g:rehash256=1
 
 " >colorsheme <default, koehler, darkblue, desert, shine, ron, torte>
-"colorscheme ron 
-colorscheme molokai 
+"colorscheme ron
+colorscheme molokai
 
 " ros launch file syntax highliight
 autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
@@ -121,3 +121,6 @@ au! BufNewFile,BufRead *.launch setf xml
 " turn on cursoline
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
+
+" remove all spaces in the end of the lines when saving files
+autocmd BufWritePre * :%s/\s\+$//e
