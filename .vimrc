@@ -46,7 +46,6 @@ filetype plugin indent on     " required (根據檔案類型決定自動縮台�
 
 
 set number
-set ai
 set expandtab
 
 set cursorline
@@ -66,11 +65,12 @@ if &filetype ==# 'c' || &filetype ==# 'cpp' || &filetype ==# 'h' || &filetype ==
     set tw=80
 endif
 
-set tabstop=4
-set shiftwidth=4
 if &filetype ==# 'launch' || &filetype ==# 'xml'
     set tabstop=2
     set shiftwidth=2
+else
+    set tabstop=4
+    set shiftwidth=4
 endif
 
 " last time position
@@ -117,3 +117,7 @@ hi MatchParen     ctermfg=161   ctermbg=254   cterm=bold
 
 " launch file
 au! BufNewFile,BufRead *.launch setf xml
+
+" turn on cursoline
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
