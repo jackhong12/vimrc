@@ -39,7 +39,6 @@ Plugin 'tomlion/vim-solidity'
 "set showtabline=2
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-set encoding=utf-8
 let g:airline_theme='badwolf'
 "let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts=1
@@ -48,9 +47,12 @@ let g:airline#extensions#tabline#enabled = 1
 
 Plugin 'ycm-core/YouCompleteMe'
 
-
+"Plugin 'ryanoasis/vim-webdevicons'
+Plugin 'ryanoasis/vim-devicons'
+set guifont=DroidSansMono\ Nerd\ Font\ 11
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 
+set encoding=utf8
 " (for vim 8.2) remove weird symbols.
 let &t_TI = ""
 let &t_TE = ""
