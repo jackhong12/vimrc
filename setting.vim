@@ -51,6 +51,9 @@ Plugin 'ycm-core/YouCompleteMe'
 
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 
+" (for vim 8.2) remove weird symbols.
+let &t_TI = ""
+let &t_TE = ""
 
 set number
 set expandtab
