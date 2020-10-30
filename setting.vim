@@ -45,6 +45,10 @@ let g:airline_theme='badwolf'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#formatter = 'default'
+
+Plugin 'ycm-core/YouCompleteMe'
+
+
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 
 
