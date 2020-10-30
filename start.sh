@@ -1,6 +1,6 @@
 cp ./.vimrc ~/.vimrc
 sudo apt-get install vim -y
-mkdir -p ~/.vim/colors 
+mkdir -p ~/.vim/colors
 cp ./color/molokai.vim ~/.vim/colors/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/vundle
 vim +PluginInstall +qall
@@ -17,3 +17,6 @@ sudo apt-get install fonts-powerline
 
 # copyclip
 sudo apt-get install vim-gnome -y
+
+# youcompleteme
+python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer
