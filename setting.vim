@@ -56,6 +56,10 @@ Plugin 'google/vim-searchindex'
 
 Plugin 'tpope/vim-fugitive'
 
+Plugin 't9md/vim-choosewin'
+let g:choosewin_overlay_enable = 1
+nmap  -  <Plug>(choosewin)
+
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 
