@@ -42,6 +42,7 @@ $ sudo sh ~/my_vimrc/start.sh
     - Add fancy symbols in vim
 - [google/vim-searchindex](https://github.com/google/vim-searchindex)
     - Show the index of the searching word.
+    - `g/`: Show previous searching words
 
 ## Installing or Updating Plugins by vundle
 **in vim**

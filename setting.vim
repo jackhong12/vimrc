@@ -43,13 +43,19 @@ let g:airline_theme='badwolf'
 "let g:airline_theme='bubblegum'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'default'
 
+" autocomplete
 Plugin 'ycm-core/YouCompleteMe'
 
+" fancy symbols
 Plugin 'ryanoasis/vim-devicons'
 
+" searching idex
 Plugin 'google/vim-searchindex'
+
+Plugin 'tpope/vim-fugitive'
+
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 
@@ -103,7 +109,7 @@ nnoremap <leader>t :term<cr><c-w><s-j>
 nnoremap <leader>l :bNext<cr>
 nnoremap <leader>h :bprevious<cr>
 
-" airline
+" buffer files switching
 nnoremap <F2> :bp<cr>
 nnoremap <F3> :bn<cr>
 
