@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let mapleader=','
+
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -11,7 +13,7 @@ Plugin 'gmarik/vundle'
 Plugin 'godlygeek/tabular'
 
 Plugin 'preservim/nerdtree'
-map <C-i> :NERDTreeToggle<CR>
+map <leader>h :NERDTreeToggle<CR>
 
 "Plugin 'plasticboy/vim-markdown'
 "let g:vim_markdown_math = 1
@@ -19,7 +21,7 @@ map <C-i> :NERDTreeToggle<CR>
 Plugin 'majutsushi/tagbar'
 let g:tagbar_width=35
 let g:tagbar_autofocus=1
-nmap <C-o> :TagbarToggle<CR>
+nmap <leader>l :TagbarToggle<CR>
 
 Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 
@@ -47,6 +49,8 @@ let g:airline#extensions#tabline#formatter = 'default'
 
 " autocomplete
 Plugin 'ycm-core/YouCompleteMe'
+nnoremap gdf :YcmCompleter GoToDefinition<CR>
+nnoremap sdf :split<CR><C-W>J:YcmCompleter GoToDefinition<CR>:resize 10<CR>
 
 " fancy symbols
 Plugin 'ryanoasis/vim-devicons'
@@ -59,6 +63,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 't9md/vim-choosewin'
 let g:choosewin_overlay_enable = 1
 nmap  -  <Plug>(choosewin)
+
+
+Plugin 'ctrlpvim/ctrlp.vim'
+nnoremap <C-p> :CtrlP<CR>
 
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
@@ -107,11 +115,8 @@ inoremap{<CR> {<CR>}<Esc>ko
 inoremap jk <ESC>
 "inoremap <c-h> <esc>xa
 
-let mapleader=','
 nnoremap <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <leader>t :term<cr><c-w><s-j>
-nnoremap <leader>l :bNext<cr>
-nnoremap <leader>h :bprevious<cr>
 
 " buffer files switching
 nnoremap <F2> :bp<cr>
