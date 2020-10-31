@@ -23,7 +23,7 @@ $ sudo sh ~/my_vimrc/start.sh
 - [godlygeek/tabular](https://github.com/godlygeek/tabular)
     - To align table automatically
 - [preservim/nerdtree](https://github.com/preservim/nerdtree)
-    - To browse the directories and open files more easily 
+    - To browse the directories and open files more easily
     ![nerdtree-demo](./img/readme/nerdtree.png)
 - [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
     - To display all functions and variables
@@ -36,6 +36,12 @@ $ sudo sh ~/my_vimrc/start.sh
 - [plasticboy/vim-markdown](https://github.com/plasticboy/vim-markdown)
 - [Yggdroot/indentLine](https://github.com/Yggdroot/indentLine)
 - [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) & [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
+- [ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
+    - autocomplete
+- [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
+    - Add fancy symbols in vim
+- [google/vim-searchindex](https://github.com/google/vim-searchindex)
+    - Show the index of the searching word.
 
 ## Installing or Updating Plugins by vundle
 **in vim**

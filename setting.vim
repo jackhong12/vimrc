@@ -47,8 +47,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 Plugin 'ycm-core/YouCompleteMe'
 
-"Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'ryanoasis/vim-devicons'
+
+Plugin 'google/vim-searchindex'
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
 
