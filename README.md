@@ -38,6 +38,7 @@ $ sudo sh ~/my_vimrc/start.sh
 - [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) & [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes)
 - [ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
     - autocomplete
+    - `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug`: create compile_commands.json file
 - [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
     - Add fancy symbols in vim
 - [google/vim-searchindex](https://github.com/google/vim-searchindex)

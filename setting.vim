@@ -51,6 +51,10 @@ let g:airline#extensions#tabline#formatter = 'default'
 Plugin 'ycm-core/YouCompleteMe'
 nnoremap gdf :YcmCompleter GoToDefinition<CR>
 nnoremap sdf :split<CR><C-W>J:YcmCompleter GoToDefinition<CR>:resize 10<CR>
+let g:ycm_global_ycm_extra_conf="~/.ycm_extra_conf.py"
+set completeopt-=preview
+"let g:ycm_show_diagnostics_ui = 0
+
 
 " fancy symbols
 Plugin 'ryanoasis/vim-devicons'
