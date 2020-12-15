@@ -36,7 +36,7 @@ let g:indentLine_char_list = ['┊']
 let g:indentLine_color_term = 239
 
 " solidity file syntax highlight
-Plugin 'tomlion/vim-solidity'
+"Plugin 'tomlion/vim-solidity'
 
 "set showtabline=2
 Plugin 'vim-airline/vim-airline'
@@ -62,15 +62,15 @@ Plugin 'ryanoasis/vim-devicons'
 " searching idex
 Plugin 'google/vim-searchindex'
 
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 
 Plugin 't9md/vim-choosewin'
 let g:choosewin_overlay_enable = 1
 nmap  -  <Plug>(choosewin)
 
 
-Plugin 'ctrlpvim/ctrlp.vim'
-nnoremap <C-p> :CtrlP<CR>
+"Plugin 'ctrlpvim/ctrlp.vim'
+"nnoremap <C-p> :CtrlP<CR>
 
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
@@ -80,6 +80,7 @@ set encoding=utf8
 let &t_TI = ""
 let &t_TE = ""
 
+set backspace=indent,eol,start
 set number
 set expandtab
 
