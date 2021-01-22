@@ -19,6 +19,11 @@ $ sudo sh ~/my_vimrc/start.sh
 └── README.md
 ```
 
+## Basic Function
+### Combine Copy buffer
+- Need to turn on `xterm_clipboard`
+    - `sudo apt-get install vim-gtk`
+
 ## Plugins Used in .vimrc
 - [godlygeek/tabular](https://github.com/godlygeek/tabular)
     - To align table automatically

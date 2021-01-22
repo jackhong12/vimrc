@@ -20,3 +20,6 @@ sudo apt-get install vim-gnome -y
 
 # youcompleteme
 python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer
+
+# copyboard
+sudo apt-get install vim-gtk
