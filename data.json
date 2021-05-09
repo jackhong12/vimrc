@@ -1,0 +1,7 @@
+{
+	"vimrc": {
+		"script": "./install.sh",
+		"replace": {
+		}
+	}
+}
