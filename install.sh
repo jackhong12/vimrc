@@ -1,8 +1,14 @@
 #!/bin/bash
 
-sudo apt-get install vim -y
-sudo apt-get install curl -y
-sudo apt-get install git -y
+is_mute=false
+for i in $*; do
+    if [ $i == "-mute" ]
+    then
+        is_mute=true
+    fi
+done
+
+sudo apt-get install vim curl git -y
 
 # plugin manager
 git clone https://github.com/VundleVim/Vundle.vim.git ${HOME}/.vim/bundle/vundle
@@ -29,9 +35,14 @@ sudo apt-get install vim-gtk -y
 # configuration file
 # .vimrc
 echo "source $(pwd)/setting.vim" > ${HOME}/.vimrc
-vim +PluginInstall +qall
+if $is_mute
+then
+    vim +PluginInstall +qall &>/dev/null
+else
+    vim +PluginInstall +qall
+fi
 
 # YCM
 sudo apt-get install build-essential cmake vim-nox python3-dev -y
 sudo apt-get install mono-complete golang nodejs default-jdk npm -y
-#cd ${HOME}/.vim/bundle/YouCompleteMe && python3 install.py --all
+cd ${HOME}/.vim/bundle/YouCompleteMe && python3 install.py --clangd-completer
