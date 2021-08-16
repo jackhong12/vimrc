@@ -44,6 +44,7 @@ $ sudo sh ~/my_vimrc/start.sh
 - [ycm-core/YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
     - autocomplete
     - `cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug`: create compile_commands.json file
+    - [compiles_flag.txt](https://clang.llvm.org/docs/JSONCompilationDatabase.html)
 - [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons)
     - Add fancy symbols in vim
 - [google/vim-searchindex](https://github.com/google/vim-searchindex)
