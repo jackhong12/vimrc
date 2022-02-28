@@ -34,7 +34,8 @@ sudo apt-get install vim-gtk -y
 
 # configuration file
 # .vimrc
-echo "source $(pwd)/setting.vim" > ${HOME}/.vimrc
+cp ./setting.vim ${HOME} 
+echo "source ${HOME}/setting.vim" > ${HOME}/.vimrc
 if $is_mute
 then
     vim +PluginInstall +qall &>/dev/null
