@@ -1,120 +1,220 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"-------------------------------------------------------------------------------
+" Only put common settings in this file
+"-------------------------------------------------------------------------------
 
-"set the runtime path to include Vundle and initialize
+" zo: open fold
+" zc: close fold
+
+" note ======================================================================{{{
+
+" mappings =================================================================={{{
+" <F1> ~ <F12>
+"     <F1>            : previous file
+"     <F2>            : next file
+"     <F3>            : previous git difference
+"     <F4>            : next git difference
+"     <F5>            : highlight git difference
+"     <F6>            : help
+"
+" leader keys
+"     <leader><space> : clear matching
+"     <leader>a       : tabular alignment
+"     <leader>h       : toggle nerd tree
+"     <leader>z       : focus folding
+"
+" others
+"     jk              : ESC
+"     H               : move to the head of the line
+"     L               : move to the end of the line
+
+" ---------------------------------------------------------------------------}}}
+
+" ---------------------------------------------------------------------------}}}
+" plugins ==================================================================={{{
+let mapleader=',' " set leader key
+set nocompatible  " be iMproved, required
+filetype off      " required
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" alternatively, pass a path where Vundle should install plugins
-"let path = '~/some/path/here'
-"call vundle#rc(path)
-
-" let Vundle manage Vundle, required
+filetype plugin indent on
 Plugin 'gmarik/vundle'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between here and filetype plugin indent on.
-" scripts on GitHub repos
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'tpope/vim-rails.git'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" scripts from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-" " scripts not on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
-" ...
+" vim-rainbow ==============================================================={{{
+Plugin 'frazrepo/vim-rainbow'
+au FileType c,cpp,objc,objcpp call rainbow#load()
 
-filetype plugin indent on     " required (根據檔案類型決定自動縮台格式)
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin commands are not allowed.
-" Put your stuff after this line
+" ---------------------------------------------------------------------------}}}
+" vim-airline ==============================================================={{{
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_theme                        = 'badwolf'
+let g:airline_powerline_fonts              = 1
+let g:airline#extensions#tabline#enabled   = 1
+let g:airline#extensions#tabline#formatter = 'default'
 
-" #NERDTree 
-Plugin 'scrooloose/nerdtree'
-" >NERDTree <F5> 快捷鍵開關
-map <F5> :NERDTreeToggle<CR>
+" ---------------------------------------------------------------------------}}}
+" vim-devicons =============================================================={{{
+Plugin 'ryanoasis/vim-devicons'
 
-" #YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-" > .vimrc 讀入 .ycm_extra_conf.py
-let g:ycm_global_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_global_extra_conf = 0
+" ---------------------------------------------------------------------------}}}
+" vim-gitgutter ============================================================={{{
+Plugin 'airblade/vim-gitgutter'
 
-"set nocompatible
-"filetype plugin indent on
+" ---------------------------------------------------------------------------}}}
+" supertab =================================================================={{{
+Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
+" ---------------------------------------------------------------------------}}}
+" indentLine================================================================={{{
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_char_list = ['┊']
+let g:indentLine_color_term = 239
 
-" #vim 基本功能
-" >顯示行號
-set number 
-" >自動縮排
-set ai
-" >縮排間隔數<tab>
-set tabstop=4
-" >自動縮排對齊間隔數
-set shiftwidth=4
-" >輸入 tab 自動轉換成 space
-"set expandtab
-" >右下角顯示 	行，列 目前在文件位置% （預設模式）
+" ---------------------------------------------------------------------------}}}
+" tabular ==================================================================={{{
+" usage:
+"     :Tab/<key>
+Plugin 'godlygeek/tabular'
+
+" ---------------------------------------------------------------------------}}}
+" nerdtree =================================================================={{{
+Plugin 'preservim/nerdtree'
+
+" ---------------------------------------------------------------------------}}}
+
+" ---------------------------------------------------------------------------}}}
+" basic options ============================================================={{{
+" global options
+" NOTE:
+" 1. set background needs to be before syntax highlight for vim 6.x.
+" 2. type :digraphs to access the default di-graph code mapping
+"    type ^K+{char1}{char2} to input digraphs
+" 3. if you setenv DISPLAY to a machine which does not enable xhost +,
+"    some versions of vim will get stuck.
+set nocompatible
+set wildmenu
+set nostartofline
+set esckeys
 set ruler
-" >在 insert 模式啟用 blackspace (預設模式)
+set secure
+set number
+set showmatch   " jump to the matching bracket
+set showmode    " show mode
+set matchtime=1 " 1 sec matching time
+set linebreak
+set exrc
+set cinoptions=t0,(0,l1,g1,h1,i4,w1,W4
 set backspace=2
-" >自動註解 （文件一行有註解，後面貼上都會有註解）
-"set formatoption+=r
-" >保留100個使用過指令
-set history=100
-" >在關鍵字尚未完全輸入完畢前就顯示結果 (ctrl+n)???
-set incsearch 
-
-" #Key Mapping
-" >輸入 ( 自動產生 ()
-inoremap( ()<Esc>i
-" >輸入 " 自動產生 ""
-"inoremap" ""<Esc>i"
-" >輸入 ' 自動產生 ''
-"inoremap' ''<Esc>i"
-" >輸入 [ 自動產生 []
-inoremap[ []<Esc>i
-" >輸入 {{ 自動產生 {}
-inoremap{{ {}<Esc>i
-" >輸入 { + Enter 自動產生 { Enter } 
-inoremap{<CR> {<CR>}<Esc>ko
-
-" #游標選取
-" >開啟游標		v(選取字元)	ctrl+insert(複製)	shift+insert(貼上)
-set mouse=a
-" >停用游標
-"set mouse=""
-
-" #背景風格
-" >設定程式語法高亮功能 syntax <on/enable, off>
-syntax on 
-" >colorsheme <default, koehler, darkblue, desert, shine, ron, torte>
-"colo default 
-" >顯示游標所在列
-set cursorline
-" >cursorline 效果     文字變化: cterm <none, underline, blod, reverse>		背景顏色: ctermbg	前景顏色: ctermfg	
-"hi CursorLine cterm=none ctermbg=DarkMagenta ctermfg=White
-" >顯示游標所在行
-"set cursorcolumn
-" >cursorcolumn 效果	文字變化: cterm <none, underline, blod, reverse>	背景顏色: ctermbg   前景顏色: ctermfg
-"hi CursorColumn cterm=none ctermbg=DarkMagenta ctermfg=White
-
-set completeopt-=preview
+set whichwrap=<,>,[,]
 set background=dark
+set path=.,~,/usr/include,/usr/openwin/include,/usr/local/include
+set statusline=%1*%{MyShowBadFormat()}%*%<%F%h%m%r%=(%l,%v)\ %b\ 0x%B\ %P
+set laststatus=2
+set tags=tags,../tags,../../tags,../../../tags
+set guioptions+=a
+set nowrap
+set cursorline
+set cscopetag
+set mouse=a      " enable mouse mode
+set ttymouse=sgr " enable to drag window
+set shortmess+=A " ignore swap files warning
+set showcmd      " show commands in left bottom corner
+"set digraph
+" TODO
+"set dictionary=
+"set showbreak
+
+" highlight ================================================================={{{
+set incsearch
+set hlsearch
+set ignorecase
+"set smartcase
+
+" ---------------------------------------------------------------------------}}}
+" indent ===================================================================={{{
+set smartindent
+set autoindent
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
+" ---------------------------------------------------------------------------}}}
+" display unvisible symbols ================================================={{{
+set nolist
+set listchars=eol:$,tab:>-,extends:>,precedes:<
+
+" ---------------------------------------------------------------------------}}}
+
+" ---------------------------------------------------------------------------}}}
+" key mappings =============================================================={{{
+
+" <F1> ~ <F12> =============================================================={{{
+nnoremap <F1> :bp<cr>
+nnoremap <F2> :bn<cr>
+nnoremap <F3> :GitGutterPrevHunk<cr>zvzz
+nnoremap <F4> :GitGutterNextHunk<cr>zvzz
+nnoremap <F5> :GitGutterLineHighlightsToggle<cr>
+map <F6>      :help <C-R><C-W><CR>
+"   <F7> I reserve F7 for SnippetsEmu plugin.
+"   <F8> I reserve F8 for SuperTab plugin.
+map <F9> <ESC>:set paste!<CR>
+"map <F9> :set paste<CR>i
+map <ESC>[H 0
+map <ESC>Ow $
+
+" ---------------------------------------------------------------------------}}}
+" leader keys ==============================================================={{{
+map      <leader><space> :noh<cr>:call clearmatches()<cr>
+map      <leader>h       :NERDTreeToggle<cr>
+nnoremap <leader>z       zMzvzz
+vnoremap <leader>a       Tab/
+
+" ---------------------------------------------------------------------------}}}
+" other keys ================================================================{{{
+imap     jk <ESC>
+nnoremap n  nzzzv
+nnoremap N  Nzzzv
+"nnoremap H  0
+"nnoremap L  g_
+nnoremap *  *zzzv
+nnoremap #  #zzzv
+" TODO
+" g; g;zz
+" g: g:zz
+
+" ---------------------------------------------------------------------------}}}
+
+" ---------------------------------------------------------------------------}}}
+" color scheme =============================================================={{{
+syntax on
 set t_Co=256
-set backspace=indent,eol,start
+let g:rehash256=1
+colorscheme molokai
+
+" ---------------------------------------------------------------------------}}}
+" other files ==============================================================={{{
+source ~/.vim/files/vim.vim
+
+" ---------------------------------------------------------------------------}}}
+" autocommand ==============================================================={{{
+" help
+"     :autocmd : show all auocmd
+
+augroup redhat
+    " clear redhat settings (for last time position)
+    autocmd!
+augroup END
+
+if has("autocmd")
+    " last time position
+    au BufReadPost *
+        \ if
+        \     line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+
+    " resize window
+    au VimResized * exe "normal! \<c-w>="
+endif
+" ---------------------------------------------------------------------------}}}
