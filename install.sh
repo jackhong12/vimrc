@@ -1,7 +1,10 @@
 #!/bin/bash
 
-ln -sf `pwd`/.vimrc ~/
+mkdir ~/.vim/plugin -p
 
-mkdir -p ~/.vim/files
-ln -sf `pwd`/files/vim.vim ~/.vim/files
-ln -sf `pwd`/files/c.vim ~/.vim/files
+for f in `pwd`/plugin/*.vim; do
+    ln -sf $f ~/.vim/plugin 
+    echo $f
+done
+
+vim +PluginInstall +qall
