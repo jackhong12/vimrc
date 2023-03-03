@@ -18,6 +18,8 @@ function! s:set_vim()
     set foldmethod=marker
     let s:tmpfoldmarker=&foldmarker
     set foldmarker={{{,}}}
+    let s:tmpfoldtext=&foldtext
+    set foldtext=VimFoldText()
 
     nnoremap <leader>s o<esc>DI" <esc>75A=<esc>A{{{<esc>^llR
     nnoremap <leader>e o<esc>DI" <esc>75A-<esc>A}}}<esc>^
@@ -30,6 +32,7 @@ endfunction
 function! s:unset_vim()
     let s:foldmethod=s:tmpfoldmethod
     let s:foldmarker=s:tmpfoldmarker
+    let s:foldtext=s:tmpfoldtext
 
     nunmap <leader>s
     nunmap <leader>e
@@ -37,4 +40,11 @@ function! s:unset_vim()
     if exists('+colorcolumn')
         set colorcolumn&
     endif
+endfunction
+
+function! VimFoldText()
+    let content = substitute(getline(v:foldstart),"\" \\([^=]*\\)=*{{{", "- \\1",1)
+    let txt = repeat("    " , v:foldlevel - 1) . content
+    let line = txt . repeat(" ", (&columns - len(txt)))
+    return line
 endfunction
