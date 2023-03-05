@@ -1,5 +1,7 @@
 #!/bin/bash
 
+distribution=`lsb_release -a 2> /dev/null | grep Description | sed 's|Description:[\t ]*||g'`
+
 check_install () {
     for exe in "$@"; do
         if ! command -v $exe &> /dev/null; then
@@ -8,7 +10,7 @@ check_install () {
     done
 }
 
-check_install vim curl git
+check_install vim curl git wget
 
 # use vundle to manage plugins
 vundlepath=${HOME}/.vim/bundle/vundle
@@ -27,3 +29,14 @@ for f in `pwd`/colors/*.vim; do
 done
 
 vim +PluginInstall +qall
+
+# install fonts
+if [[ $distribution = 'Ubuntu 22.04.'*'LTS' ]] || [[ $distribution = 'Ubuntu 22.04.'*'LTS' ]]; then
+    if [ ! -f ~/.fonts/'Ubuntu Mono Nerd Font Complete Mono.ttf' ]; then
+        wget -P ~/.fonts https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete%20Mono.ttf
+    fi
+    printf "\033[0;34mChange terminal fonts: \n"
+    printf "    Preferences > Unamed > Custom font > UbuntuMono Nerd Font Mono\033[0m\n"
+else
+    echo "Install fonts from https://github.com/ryanoasis/nerd-fonts"
+fi
