@@ -109,7 +109,6 @@ set backspace=2
 set whichwrap=<,>,[,]
 set background=dark
 set path=.,~,/usr/include,/usr/openwin/include,/usr/local/include
-set statusline=%1*%{MyShowBadFormat()}%*%<%F%h%m%r%=(%l,%v)\ %b\ 0x%B\ %P
 set laststatus=2
 set tags=tags,../tags,../../tags,../../../tags
 set guioptions+=a
