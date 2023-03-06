@@ -109,7 +109,6 @@ set backspace=2
 set whichwrap=<,>,[,]
 set background=dark
 set path=.,~,/usr/include,/usr/openwin/include,/usr/local/include
-set statusline=%1*%{MyShowBadFormat()}%*%<%F%h%m%r%=(%l,%v)\ %b\ 0x%B\ %P
 set laststatus=2
 set tags=tags,../tags,../../tags,../../../tags
 set guioptions+=a
@@ -201,12 +200,12 @@ colorscheme molokai
 " help
 "     :autocmd : show all auocmd
 
-augroup redhat
-    " clear redhat settings (for last time position)
-    autocmd!
-augroup END
-
 if has("autocmd")
+    augroup redhat
+        " clear redhat settings (for last time position)
+        autocmd!
+    augroup END
+
     " last time position
     au BufReadPost *
         \ if
@@ -216,5 +215,8 @@ if has("autocmd")
 
     " resize window
     au VimResized * exe "normal! \<c-w>="
+
+    au WinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
 endif
 " ---------------------------------------------------------------------------}}}
