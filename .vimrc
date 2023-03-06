@@ -146,6 +146,62 @@ set listchars=eol:$,tab:>-,extends:>,precedes:<
 " ---------------------------------------------------------------------------}}}
 
 " ---------------------------------------------------------------------------}}}
+" color scheme =============================================================={{{
+syntax on
+set t_Co=256
+let g:rehash256=1
+colorscheme molokai
+
+" ---------------------------------------------------------------------------}}}
+" other files ==============================================================={{{
+" vim will auto load files in ~/.vim/plugin
+
+" ---------------------------------------------------------------------------}}}
+" autocommand ==============================================================={{{
+" help
+"     :autocmd : show all auocmd
+
+if has("autocmd")
+    augroup redhat
+        " clear redhat settings (for last time position)
+        autocmd!
+    augroup END
+
+    " last time position
+    au BufReadPost *
+        \ if
+        \     line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+
+    " resize window
+    au VimResized * exe "normal! \<c-w>="
+
+    au WinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+endif
+" ---------------------------------------------------------------------------}}}
+" functions ================================================================={{{
+
+" execute in shell =========================================================={{{
+function! s:ExecuteInShell(command)
+    let command=join(map(split(a:command), 'expand(v:val)'))
+    let winnr = bufwinnr('^' . command . '$')
+    silent! execute winnr < 0 ? 'botright vnew ' . fnameescape(command) : winnr . 'wincmd w'
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap nonumber
+    echo 'Execute ' . command . '...'
+    silent! execute 'silent %!' . command
+    silent! redraw
+    let tmpcmd='au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd'''
+    silent! execute 'au BufUnload <buffer> :' . bufnr('#') . 'wincmd w'
+    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<cr>:AnsiEsc<cr>'
+    silent! execute 'nnoremap <silent> <buffer> q :q<cr>'
+    silent! execute 'AnsiEsc'
+    echo 'Shell command ' . command . ' executed.'
+endfunction
+" ---------------------------------------------------------------------------}}}
+
+" ---------------------------------------------------------------------------}}}
 " key mappings =============================================================={{{
 
 " <F1> ~ <F12> =============================================================={{{
@@ -154,7 +210,8 @@ nnoremap <F2> :bn<cr>
 nnoremap <F3> :GitGutterPrevHunk<cr>zvzz
 nnoremap <F4> :GitGutterNextHunk<cr>zvzz
 nnoremap <F5> :GitGutterLineHighlightsToggle<cr>
-map <F6>      :help <C-R><C-W><CR>
+nnoremap <F6> :set paste!<cr>
+"map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
 "   <F8> I reserve F8 for SuperTab plugin.
 map <F9> <ESC>:set paste!<CR>
@@ -164,10 +221,15 @@ map <ESC>Ow $
 
 " ---------------------------------------------------------------------------}}}
 " leader keys ==============================================================={{{
-map      <leader><space> :noh<cr>:call clearmatches()<cr>
-map      <leader>h       :NERDTreeToggle<cr>
-nnoremap <leader>z       zMzvzz
-vnoremap <leader>a       Tab/
+map      <leader><space>     : noh<cr>:call clearmatches()<cr>
+vnoremap <leader>a           : Tab/
+map      <leader>h           : NERDTreeToggle<cr>
+nnoremap <silent> <leader>/  : execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>ev          : vsp ~/.vimrc<cr>/" note<cr>
+nnoremap <leader>!           : Shell
+nnoremap <leader>z           zMzvzz
+
+command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
 
 " ---------------------------------------------------------------------------}}}
 " other keys ================================================================{{{
@@ -184,36 +246,4 @@ nnoremap #  #zzzv
 
 " ---------------------------------------------------------------------------}}}
 
-" ---------------------------------------------------------------------------}}}
-" color scheme =============================================================={{{
-syntax on
-set t_Co=256
-let g:rehash256=1
-colorscheme molokai
-
-" ---------------------------------------------------------------------------}}}
-" other files ==============================================================={{{
-" vim will auto load files in ~/.vim/plugin
-
-" ---------------------------------------------------------------------------}}}
-" autocommand ==============================================================={{{
-" help
-"     :autocmd : show all auocmd
-
-augroup redhat
-    " clear redhat settings (for last time position)
-    autocmd!
-augroup END
-
-if has("autocmd")
-    " last time position
-    au BufReadPost *
-        \ if
-        \     line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
-        \ endif
-
-    " resize window
-    au VimResized * exe "normal! \<c-w>="
-endif
 " ---------------------------------------------------------------------------}}}
