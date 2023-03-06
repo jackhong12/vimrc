@@ -146,47 +146,6 @@ set listchars=eol:$,tab:>-,extends:>,precedes:<
 " ---------------------------------------------------------------------------}}}
 
 " ---------------------------------------------------------------------------}}}
-" key mappings =============================================================={{{
-
-" <F1> ~ <F12> =============================================================={{{
-nnoremap <F1> :bp<cr>
-nnoremap <F2> :bn<cr>
-nnoremap <F3> :GitGutterPrevHunk<cr>zvzz
-nnoremap <F4> :GitGutterNextHunk<cr>zvzz
-nnoremap <F5> :GitGutterLineHighlightsToggle<cr>
-nnoremap <F6> :set paste!<cr>
-"map <F6>      :help <C-R><C-W><CR>
-"   <F7> I reserve F7 for SnippetsEmu plugin.
-"   <F8> I reserve F8 for SuperTab plugin.
-map <F9> <ESC>:set paste!<CR>
-"map <F9> :set paste<CR>i
-map <ESC>[H 0
-map <ESC>Ow $
-
-" ---------------------------------------------------------------------------}}}
-" leader keys ==============================================================={{{
-map      <leader><space>     :noh<cr>:call clearmatches()<cr>
-vnoremap <leader>a           :Tab/
-map      <leader>h           :NERDTreeToggle<cr>
-nnoremap <silent> <leader>/  :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
-nnoremap <leader>z           zMzvzz
-
-" ---------------------------------------------------------------------------}}}
-" other keys ================================================================{{{
-imap     jk <ESC>
-nnoremap n  nzzzv
-nnoremap N  Nzzzv
-"nnoremap H  0
-"nnoremap L  g_
-nnoremap *  *zzzv
-nnoremap #  #zzzv
-" TODO
-" g; g;zz
-" g: g:zz
-
-" ---------------------------------------------------------------------------}}}
-
-" ---------------------------------------------------------------------------}}}
 " color scheme =============================================================={{{
 syntax on
 set t_Co=256
@@ -221,4 +180,70 @@ if has("autocmd")
     au WinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
 endif
+" ---------------------------------------------------------------------------}}}
+" functions ================================================================={{{
+
+" execute in shell =========================================================={{{
+function! s:ExecuteInShell(command)
+    let command=join(map(split(a:command), 'expand(v:val)'))
+    let winnr = bufwinnr('^' . command . '$')
+    silent! execute winnr < 0 ? 'botright vnew ' . fnameescape(command) : winnr . 'wincmd w'
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap nonumber
+    echo 'Execute ' . command . '...'
+    silent! execute 'silent %!' . command
+    silent! redraw
+    let tmpcmd='au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd'''
+    silent! execute 'au BufUnload <buffer> :' . bufnr('#') . 'wincmd w'
+    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<cr>:AnsiEsc<cr>'
+    silent! execute 'nnoremap <silent> <buffer> q :q<cr>'
+    silent! execute 'AnsiEsc'
+    echo 'Shell command ' . command . ' executed.'
+endfunction
+" ---------------------------------------------------------------------------}}}
+
+" ---------------------------------------------------------------------------}}}
+" key mappings =============================================================={{{
+
+" <F1> ~ <F12> =============================================================={{{
+nnoremap <F1> :bp<cr>
+nnoremap <F2> :bn<cr>
+nnoremap <F3> :GitGutterPrevHunk<cr>zvzz
+nnoremap <F4> :GitGutterNextHunk<cr>zvzz
+nnoremap <F5> :GitGutterLineHighlightsToggle<cr>
+nnoremap <F6> :set paste!<cr>
+"map <F6>      :help <C-R><C-W><CR>
+"   <F7> I reserve F7 for SnippetsEmu plugin.
+"   <F8> I reserve F8 for SuperTab plugin.
+map <F9> <ESC>:set paste!<CR>
+"map <F9> :set paste<CR>i
+map <ESC>[H 0
+map <ESC>Ow $
+
+" ---------------------------------------------------------------------------}}}
+" leader keys ==============================================================={{{
+map      <leader><space>     : noh<cr>:call clearmatches()<cr>
+vnoremap <leader>a           : Tab/
+map      <leader>h           : NERDTreeToggle<cr>
+nnoremap <silent> <leader>/  : execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>ev          : vsp ~/.vimrc<cr>/" note<cr>
+nnoremap <leader>!           : Shell
+nnoremap <leader>z           zMzvzz
+
+command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+
+" ---------------------------------------------------------------------------}}}
+" other keys ================================================================{{{
+imap     jk <ESC>
+nnoremap n  nzzzv
+nnoremap N  Nzzzv
+"nnoremap H  0
+"nnoremap L  g_
+nnoremap *  *zzzv
+nnoremap #  #zzzv
+" TODO
+" g; g;zz
+" g: g:zz
+
+" ---------------------------------------------------------------------------}}}
+
 " ---------------------------------------------------------------------------}}}
