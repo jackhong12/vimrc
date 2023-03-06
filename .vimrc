@@ -154,7 +154,8 @@ nnoremap <F2> :bn<cr>
 nnoremap <F3> :GitGutterPrevHunk<cr>zvzz
 nnoremap <F4> :GitGutterNextHunk<cr>zvzz
 nnoremap <F5> :GitGutterLineHighlightsToggle<cr>
-map <F6>      :help <C-R><C-W><CR>
+nnoremap <F6> :set paste!<cr>
+"map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
 "   <F8> I reserve F8 for SuperTab plugin.
 map <F9> <ESC>:set paste!<CR>
