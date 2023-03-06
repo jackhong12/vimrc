@@ -165,10 +165,11 @@ map <ESC>Ow $
 
 " ---------------------------------------------------------------------------}}}
 " leader keys ==============================================================={{{
-map      <leader><space> :noh<cr>:call clearmatches()<cr>
-map      <leader>h       :NERDTreeToggle<cr>
-nnoremap <leader>z       zMzvzz
-vnoremap <leader>a       Tab/
+map      <leader><space>     :noh<cr>:call clearmatches()<cr>
+vnoremap <leader>a           :Tab/
+map      <leader>h           :NERDTreeToggle<cr>
+nnoremap <silent> <leader>/  :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>z           zMzvzz
 
 " ---------------------------------------------------------------------------}}}
 " other keys ================================================================{{{
