@@ -11,9 +11,9 @@
 " <F1> ~ <F12>
 "     <F1>            : previous file
 "     <F2>            : next file
-"     <F3>            : previous git difference
-"     <F4>            : next git difference
-"     <F5>            : highlight git difference
+"     <F3>            : previous changed sections
+"     <F4>            : next changed sections
+"     <F5>            : fold unchanged sections
 "     <F6>            : help
 "
 " leader keys
@@ -57,8 +57,8 @@ let g:airline#extensions#tabline#formatter = 'default'
 Plugin 'ryanoasis/vim-devicons'
 
 " ---------------------------------------------------------------------------}}}
-" vim-gitgutter ============================================================={{{
-Plugin 'airblade/vim-gitgutter'
+" vim-signify ==============================================================={{{
+Plugin 'mhinz/vim-signify'
 
 " ---------------------------------------------------------------------------}}}
 " supertab =================================================================={{{
@@ -152,6 +152,12 @@ set t_Co=256
 let g:rehash256=1
 colorscheme molokai
 
+" vim-signify
+highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
+highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
+highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
+highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE
+
 " ---------------------------------------------------------------------------}}}
 " other files ==============================================================={{{
 " vim will auto load files in ~/.vim/plugin
@@ -200,6 +206,20 @@ function! s:ExecuteInShell(command)
     echo 'Shell command ' . command . ' executed.'
 endfunction
 " ---------------------------------------------------------------------------}}}
+" vim-signify ==============================================================={{{
+let s:_SignifyToggleFold = 0
+function! g:SignifyToggleFold()
+  let lnum = line('.')
+  if s:_SignifyToggleFold == 0
+    let s:_SignifyToggleFold = 1
+    call sy#fold#dispatch(1)
+  else
+    let s:_SignifyToggleFold = 0
+    execute "normal! zR"
+  end
+  execute 'normal!' lnum.'Gzvzz'
+endfunction
+" ---------------------------------------------------------------------------}}}
 
 " ---------------------------------------------------------------------------}}}
 " key mappings =============================================================={{{
@@ -207,9 +227,9 @@ endfunction
 " <F1> ~ <F12> =============================================================={{{
 nnoremap <F1> :bp<cr>
 nnoremap <F2> :bn<cr>
-nnoremap <F3> :GitGutterPrevHunk<cr>zvzz
-nnoremap <F4> :GitGutterNextHunk<cr>zvzz
-nnoremap <F5> :GitGutterLineHighlightsToggle<cr>
+nnoremap <F3> :call sy#jump#prev_hunk(v:count1)<cr>zvzz
+nnoremap <F4> :call sy#jump#next_hunk(v:count1)<cr>zvzz
+nnoremap <F5> :call g:SignifyToggleFold()<cr>
 nnoremap <F6> :set paste!<cr>
 "map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
