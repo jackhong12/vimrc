@@ -206,20 +206,6 @@ function! s:ExecuteInShell(command)
     echo 'Shell command ' . command . ' executed.'
 endfunction
 " ---------------------------------------------------------------------------}}}
-" vim-signify ==============================================================={{{
-let s:_SignifyToggleFold = 0
-function! g:SignifyToggleFold()
-  let lnum = line('.')
-  if s:_SignifyToggleFold == 0
-    let s:_SignifyToggleFold = 1
-    call sy#fold#dispatch(1)
-  else
-    let s:_SignifyToggleFold = 0
-    execute "normal! zR"
-  end
-  execute 'normal!' lnum.'Gzvzz'
-endfunction
-" ---------------------------------------------------------------------------}}}
 
 " ---------------------------------------------------------------------------}}}
 " key mappings =============================================================={{{
@@ -229,7 +215,7 @@ nnoremap <F1> :bp<cr>
 nnoremap <F2> :bn<cr>
 nnoremap <F3> :call sy#jump#prev_hunk(v:count1)<cr>zvzz
 nnoremap <F4> :call sy#jump#next_hunk(v:count1)<cr>zvzz
-nnoremap <F5> :call g:SignifyToggleFold()<cr>
+nnoremap <F5> :call sy#fold#toggle()<cr>zvzz
 nnoremap <F6> :set paste!<cr>
 "map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
