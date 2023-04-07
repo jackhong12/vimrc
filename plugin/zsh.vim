@@ -1,7 +1,7 @@
 " Settings for zsh scripts
 if has("autocmd")
-    au BufNewFile,BufRead *.zsh call s:set_zsh()
-    au BufLeave *.zsh call s:unset_zsh()
+    au BufNewFile,BufRead,WinEnter *.zsh call s:set_zsh()
+    au WinLeave *.zsh call s:unset_zsh()
 
     " remove all spaces in the end of lines
     au BufWritePre *.zsh :%s/\s\+$//e

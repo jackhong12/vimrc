@@ -8,8 +8,8 @@
 
 if has("autocmd")
     au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-    au BufNewFile,BufRead *.md call s:set_markdown()
-    au BufLeave *.md call s:unset_markdown()
+    au BufNewFile,BufRead,WinEnter *.md call s:set_markdown()
+    au WinLeave *.md call s:unset_markdown()
 
     " remove all spaces in the end of lines
     au BufWritePre *.md :%s/\s\+$//e

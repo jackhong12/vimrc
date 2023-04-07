@@ -1,10 +1,10 @@
 " Settings for c like files
 if has("autocmd")
-    au BufNewFile,BufRead *.c,*.h,*.cpp,*.hpp call s:set_c_setting()
-    au BufLeave *.c,*.h,*.cpp,*.hpp call s:unset_c_setting()
+    au BufNewFile,BufRead,WinEnter *.c,*.h,*.cpp,*.hpp call s:set_c_setting()
+    au WinLeave *.c,*.h,*.cpp,*.hpp call s:unset_c_setting()
 
     " remove all spaces in the end of lines
-    au BufWritePre *.c,*.h,*.cpp,*.hpp :%s/\s\+$//e
+    "au BufWritePre *.c,*.h,*.cpp,*.hpp :%s/\s\+$//e
 endif
 
 function! s:set_c_setting()

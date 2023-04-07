@@ -1,8 +1,8 @@
 " Settings for vim files
 
 if has("autocmd")
-    au BufEnter,BufNewFile,BufRead .vimrc,*.vim call s:set_vim()
-    au BufLeave .vimrc,*.vim call s:unset_vim()
+    au BufNewFile,BufRead,WinEnter .vimrc,*.vim call s:set_vim()
+    au WinLeave .vimrc,*.vim call s:unset_vim()
 
     " remove all spaces in the end of lines
     au BufWritePre .vimrc,*.vim :%s/\s\+$//e
