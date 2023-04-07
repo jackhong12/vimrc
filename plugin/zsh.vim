@@ -15,7 +15,7 @@ function! s:set_zsh()
     let s:tmpfoldmarker=&foldmarker
     set foldmarker={{{,}}}
     let s:tmpfoldtext=&foldtext
-    set foldtext=VimFoldText()
+    set foldtext=ZshFoldText()
 
     inoremap {<cr> {<cr>}<esc>ko
 endfunction
@@ -26,7 +26,7 @@ function! s:unset_zsh()
     let s:foldtext=s:tmpfoldtext
 endfunction
 
-function! VimFoldText()
+function! ZshFoldText()
     let content = substitute(getline(v:foldstart),"\# \\(.*\\){{{", "- \\1",1)
     let txt = repeat("    " , v:foldlevel - 1) . content
     let line = txt . repeat(" ", (&columns - len(txt)))
