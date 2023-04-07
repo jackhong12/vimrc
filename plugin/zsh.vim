@@ -4,12 +4,14 @@ if has("autocmd")
     au BufLeave *.zsh call s:unset_zsh()
 
     " remove all spaces in the end of lines
-    au BufWritePre *.zsh :%s/\s\+$//e 
+    au BufWritePre *.zsh :%s/\s\+$//e
 endif
 
 function! s:set_zsh()
     set shiftwidth=4
     set tabstop=4
+
+    inoremap {<cr> {<cr>}<esc>ko
 endfunction
 
 function! s:unset_zsh()
