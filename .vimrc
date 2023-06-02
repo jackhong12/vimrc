@@ -82,6 +82,17 @@ Plugin 'godlygeek/tabular'
 Plugin 'preservim/nerdtree'
 
 " ---------------------------------------------------------------------------}}}
+" tmux-complete ============================================================={{{
+Bundle 'wellle/tmux-complete.vim'
+
+" ---------------------------------------------------------------------------}}}
+" vim-perforce =============================================================={{{
+Bundle 'nfvs/vim-perforce'
+" :P4edit
+" :P4revert
+" :P4movetocl
+
+" ---------------------------------------------------------------------------}}}
 
 " ---------------------------------------------------------------------------}}}
 " basic options ============================================================={{{
@@ -211,12 +222,13 @@ endfunction
 " key mappings =============================================================={{{
 
 " <F1> ~ <F12> =============================================================={{{
-nnoremap <F1> :bp<cr>
-nnoremap <F2> :bn<cr>
-nnoremap <F3> :call sy#jump#prev_hunk(v:count1)<cr>zvzz
-nnoremap <F4> :call sy#jump#next_hunk(v:count1)<cr>zvzz
-nnoremap <F5> :call sy#fold#toggle()<cr>zvzz
-nnoremap <F6> :set paste!<cr>
+nnoremap <F1>  :bp<cr>
+nnoremap <F2>  :bn<cr>
+nnoremap <F3>  :call sy#jump#prev_hunk(v:count1)<cr>zvzz
+nnoremap <F4>  :call sy#jump#next_hunk(v:count1)<cr>zvzz
+nnoremap <F5>  :call sy#fold#toggle()<cr>zvzz
+nnoremap <F6>  :set paste!<cr>
+nnoremap <F12> :bd<cr>
 "map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
 "   <F8> I reserve F8 for SuperTab plugin.
@@ -231,6 +243,7 @@ map      <leader><space>     : noh<cr>:call clearmatches()<cr>
 vnoremap <leader>a           : Tab/
 map      <leader>h           : NERDTreeToggle<cr>
 nnoremap <silent> <leader>/  : execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>eb          : sp ~/.vim/buffer.txt<cr>
 nnoremap <leader>ev          : vsp ~/.vimrc<cr>/" note<cr>
 nnoremap <leader>!           : Shell
 nnoremap <leader>z           zMzvzz
