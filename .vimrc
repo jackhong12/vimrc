@@ -259,6 +259,7 @@ nnoremap N  Nzzzv
 "nnoremap L  g_
 nnoremap *  *zzzv
 nnoremap #  #zzzv
+nnoremap <space> :noh<cr>
 " TODO
 " g; g;zz
 " g: g:zz
