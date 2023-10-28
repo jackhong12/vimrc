@@ -18,6 +18,8 @@ function! s:set_zsh()
     set foldtext=ZshFoldText()
 
     inoremap {<cr> {<cr>}<esc>ko
+    nnoremap <leader>n i#> _rep {{{<cr><esc>xo#}}} _rep<esc>
+    nnoremap <leader>m i# _rep {{{<cr><esc>xo#}}} _rep<esc>
 endfunction
 
 function! s:unset_zsh()
