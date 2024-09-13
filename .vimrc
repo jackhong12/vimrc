@@ -91,6 +91,17 @@ Plugin 'godlygeek/tabular'
 Plugin 'preservim/nerdtree'
 
 " ---------------------------------------------------------------------------}}}
+" tmux-complete ============================================================={{{
+Bundle 'wellle/tmux-complete.vim'
+
+" ---------------------------------------------------------------------------}}}
+" vim-perforce =============================================================={{{
+Bundle 'nfvs/vim-perforce'
+" :P4edit
+" :P4revert
+" :P4movetocl
+
+" ---------------------------------------------------------------------------}}}
 
 " vim-easy-align ============================================================{{{
 Plugin 'junegunn/vim-easy-align'
@@ -239,7 +250,7 @@ nnoremap <F3> :call sy#jump#prev_hunk(v:count1)<cr>zvzz
 nnoremap <F4> :call sy#jump#next_hunk(v:count1)<cr>zvzz
 nnoremap <F5> :call sy#fold#toggle()<cr>zvzz
 nnoremap <F6> :set paste!<cr>
-map <F12> :call P4Reopen()<cr>
+map      <F12> :call P4Reopen()<cr>
 "map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
 "   <F8> I reserve F8 for SuperTab plugin.
@@ -254,6 +265,7 @@ map      <leader><space>     : noh<cr>:call clearmatches()<cr>
 vnoremap <leader>a           : Tab/
 map      <leader>h           : NERDTreeToggle<cr>
 nnoremap <silent> <leader>/  : execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+nnoremap <leader>eb          : sp ~/.vim/buffer.txt<cr>
 nnoremap <leader>ev          : vsp ~/.vimrc<cr>/" note<cr>
 nnoremap <leader>!           : Shell
 nnoremap <leader>z           zMzvzz
@@ -269,6 +281,7 @@ nnoremap N  Nzzzv
 "nnoremap L  g_
 nnoremap *  *zzzv
 nnoremap #  #zzzv
+nnoremap <space> :noh<cr>
 " TODO
 " g; g;zz
 " g: g:zz

@@ -1,13 +1,13 @@
 " Settings for zsh scripts
 if has("autocmd")
-    au BufNewFile,BufRead,WinEnter *.zsh,.zshrc call s:set_zsh()
-    au WinLeave *.zsh call s:unset_zsh()
+    au BufNewFile,BufRead,WinEnter *.sh call s:set_bash()
+    au WinLeave *.sh call s:unset_bash()
 
     " remove all spaces in the end of lines
-    au BufWritePre *.zsh :%s/\s\+$//e
+    au BufWritePre *.sh :%s/\s\+$//e
 endif
 
-function! s:set_zsh()
+function! s:set_bash()
     set shiftwidth=2
     set tabstop=2
     let s:tmpfoldmethod=&foldmethod
@@ -18,11 +18,9 @@ function! s:set_zsh()
     set foldtext=ZshFoldText()
 
     inoremap {<cr> {<cr>}<esc>ko
-    nnoremap <leader>n i#> _rep {{{<cr><esc>xo#}}} _rep<esc>
-    nnoremap <leader>m i# _rep {{{<cr><esc>xo#}}} _rep<esc>
 endfunction
 
-function! s:unset_zsh()
+function! s:unset_bash()
     let s:foldmethod=s:tmpfoldmethod
     let s:foldmarker=s:tmpfoldmarker
     let s:foldtext=s:tmpfoldtext
