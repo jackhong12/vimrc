@@ -14,7 +14,7 @@ function! s:set_c_setting()
     set shiftwidth=4
     set tabstop=4
     inoremap {<cr> {<cr>}<esc>ko
-    nnoremap <leader>p ohoShowMessage("hong: ");<esc>F"i
+    nnoremap <leader>p ohoShowMessage("hong: \n");<esc>F"i
 
     if exists('+colorcolumn')
         "set colorcolumn=80
