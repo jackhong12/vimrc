@@ -244,13 +244,13 @@ endfunction
 " key mappings =============================================================={{{
 
 " <F1> ~ <F12> =============================================================={{{
-nnoremap <F1> :bp<cr>
-nnoremap <F2> :bn<cr>
-nnoremap <F3> :call sy#jump#prev_hunk(v:count1)<cr>zvzz
-nnoremap <F4> :call sy#jump#next_hunk(v:count1)<cr>zvzz
-nnoremap <F5> :call sy#fold#toggle()<cr>zvzz
-nnoremap <F6> :set paste!<cr>
-map      <F12> :call P4Reopen()<cr>
+nnoremap <F1>  :bp<cr>
+nnoremap <F2>  :bn<cr>
+nnoremap <F3>  :call sy#jump#prev_hunk(v:count1)<cr>zvzz
+nnoremap <F4>  :call sy#jump#next_hunk(v:count1)<cr>zvzz
+nnoremap <F5>  :call sy#fold#toggle()<cr>zvzz
+nnoremap <F6>  :set paste!<cr>
+nnoremap <F12> :call P4Reopen()<cr>
 "map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
 "   <F8> I reserve F8 for SuperTab plugin.
