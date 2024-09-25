@@ -8,6 +8,8 @@ This repository contains my vim settings.
 ```
 
 ## Key Mappings
+Type `:map` to check key mappings in vim.
+
 | Key     | Action                 |
 | ---     | ---                    |
 | `<F1>`  | Previous window buffer |
