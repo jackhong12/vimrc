@@ -12,13 +12,13 @@ Type `:map` to check key mappings in vim.
 
 | Key     | Action                 |
 | ---     | ---                    |
-| `<F1>`  | Previous window buffer |
-| `<F2>`  | Next window buffer     |
-| `<F3>`  | Previous diff location |
-| `<F4>`  | Next diff location     |
-| `<F5>`  | Toggle to show diff    |
-| `<F6>`  | Toggle of paste mode   |
-| `<F7>`  | NONE                   |
+| `<F1>`  | Nerd Tree Toggle       |
+| `<F2>`  | Previous window buffer |
+| `<F3>`  | Next window buffer     |
+| `<F4>`  | Previous diff location |
+| `<F5>`  | Next diff location     |
+| `<F6>`  | Toggle to show diff    |
+| `<F7>`  | Toggle of paste mode   |
 | `<F8>`  | NONE                   |
 | `<F9>`  | NONE                   |
 | `<F10>` | NONE                   |
