@@ -91,10 +91,12 @@ Plugin 'godlygeek/tabular'
 Plugin 'preservim/nerdtree'
 
 " ---------------------------------------------------------------------------}}}
+
 " tmux-complete ============================================================={{{
 Bundle 'wellle/tmux-complete.vim'
 
 " ---------------------------------------------------------------------------}}}
+
 " vim-perforce =============================================================={{{
 Bundle 'nfvs/vim-perforce'
 " :P4edit
@@ -155,8 +157,8 @@ set showcmd      " show commands in left bottom corner
 " highlight ================================================================={{{
 set incsearch
 set hlsearch
-set ignorecase
-"set smartcase
+"set ignorecase
+set smartcase
 
 " ---------------------------------------------------------------------------}}}
 " indent ===================================================================={{{
