@@ -149,6 +149,9 @@ set mouse=a      " enable mouse mode
 set ttymouse=sgr " enable to drag window
 set shortmess+=A " ignore swap files warning
 set showcmd      " show commands in left bottom corner
+set backupdir=~/.cache/vim/backup//
+set directory=~/.cache/vim/swap//
+set undodir=~/.cache/vim/undo//
 "set digraph
 " TODO
 "set dictionary=
