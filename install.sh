@@ -30,6 +30,10 @@ done
 
 vim +PluginInstall +qall
 
+mkdir -p ~/.cache/vim/backup
+mkdir -p ~/.cache/vim/swap
+mkdir -p ~/.cache/vim/undo
+
 # install fonts
 if [[ $distribution = 'Ubuntu 22.04.'*'LTS' ]] || [[ $distribution = 'Ubuntu 22.04.'*'LTS' ]]; then
     mkdir ~/.fonts -p
