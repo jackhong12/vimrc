@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Configuration
+isYCM=1
+
 distribution=`lsb_release -a 2> /dev/null | grep Description | sed 's|Description:[\t ]*||g'`
 
 check_install () {
@@ -30,9 +33,18 @@ done
 
 vim +PluginInstall +qall
 
+# Create cache folder
 mkdir -p ~/.cache/vim/backup
 mkdir -p ~/.cache/vim/swap
 mkdir -p ~/.cache/vim/undo
+
+# Build YCM
+if [ $isYCM -eq 1 ]; then
+  check_install build-essential cmake vim-nox python3-dev
+  pushd ~/.vim/bundle/YouCompleteMe
+  ./install.py --clangd-completer
+  popd
+fi
 
 # install fonts
 if [[ $distribution = 'Ubuntu 22.04.'*'LTS' ]] || [[ $distribution = 'Ubuntu 22.04.'*'LTS' ]]; then
