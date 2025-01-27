@@ -1,49 +1,58 @@
 #!/bin/bash
 
 # Configuration
-isYCM=1
+isYCM=1 # Install YCM
 
 distribution=`lsb_release -a 2> /dev/null | grep Description | sed 's|Description:[\t ]*||g'`
 
+# commands {{{
 check_install () {
-    for exe in "$@"; do
-        if ! command -v $exe &> /dev/null; then
-            sudo apt-get install -y $exe
-        fi
-    done
+  for exe in "$@"; do
+    if ! command -v $exe &> /dev/null; then
+      sudo apt-get install -y $exe
+    fi
+  done
 }
 
-check_install vim curl git wget
+prun () {
+  cmd="$@"
+  printf "\033[0;32m$ $cmd\033[0m\n"
+  eval "$cmd"
+}
+# }}} commands
+
+prun check_install vim curl git wget
 
 # use vundle to manage plugins
 vundlepath=${HOME}/.vim/bundle/vundle
 if [ ! -d $vundlepath ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git $vundlepath
+    prun git clone https://github.com/VundleVim/Vundle.vim.git $vundlepath
 fi
 
-ln -sf `pwd`/.vimrc ~/.vimrc
+prun ln -sf `pwd`/.vimrc ~/.vimrc
 mkdir ~/.vim/plugin -p
 for f in `pwd`/plugin/*.vim; do
-    ln -sf $f ~/.vim/plugin
-done
-mkdir ~/.vim/colors -p
-for f in `pwd`/colors/*.vim; do
-    ln -sf $f ~/.vim/colors
+    prun ln -sf $f ~/.vim/plugin
 done
 
-vim +PluginInstall +qall
+prun mkdir ~/.vim/colors -p
+for f in `pwd`/colors/*.vim; do
+    prun ln -sf $f ~/.vim/colors
+done
+
+prun vim +PluginInstall +qall
 
 # Create cache folder
-mkdir -p ~/.cache/vim/backup
-mkdir -p ~/.cache/vim/swap
-mkdir -p ~/.cache/vim/undo
+prun mkdir -p ~/.cache/vim/backup
+prun mkdir -p ~/.cache/vim/swap
+prun mkdir -p ~/.cache/vim/undo
 
 # Build YCM
 if [ $isYCM -eq 1 ]; then
-  check_install build-essential cmake vim-nox python3-dev
-  pushd ~/.vim/bundle/YouCompleteMe
-  ./install.py --clangd-completer
-  popd
+  prun check_install build-essential cmake vim-nox python3-dev
+  prun pushd ~/.vim/bundle/YouCompleteMe
+  prun ./install.py --clangd-completer
+  prun popd
 fi
 
 # install fonts
