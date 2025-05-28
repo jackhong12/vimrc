@@ -114,6 +114,14 @@ xmap ga <Plug>(EasyAlign)
 
 " YouCompleteMe: Auto-Complete =============================================={{{
 Plugin 'ycm-core/YouCompleteMe'
+set completeopt-=preview " Don't show preview window
+
+" ---------------------------------------------------------------------------}}}
+
+" Copilot ==================================================================={{{
+" Insall:
+"   :Copilot setup
+Plugin 'github/copilot.vim'
 
 " ---------------------------------------------------------------------------}}}
 
@@ -300,3 +308,18 @@ nnoremap <space> :noh<cr>
 " ---------------------------------------------------------------------------}}}
 
 " ---------------------------------------------------------------------------}}}
+
+" Completely disable folding
+set nofoldenable
+set foldmethod=manual
+
+" For LaTeX files specifically
+autocmd FileType tex setlocal nofoldenable foldmethod=manual
+
+let g:vimtex_fold_enabled = 0
+
+let g:Tex_FoldedSections = 0
+let g:Tex_FoldedEnvironments = 0
+let g:Tex_FoldedMisc = 0
+
+set conceallevel=0
