@@ -116,6 +116,15 @@ xmap ga <Plug>(EasyAlign)
 Plugin 'ycm-core/YouCompleteMe'
 set completeopt-=preview " Don't show preview window
 
+nnoremap gd :YcmCompleter GoTo<cr>
+nnoremap gc :YcmCompleter GoToCallers<cr>
+
+" Short Key:
+"   - Auto jump
+"       :YouCompleter GoTo
+"   - Jump back
+"       <crl> + o
+
 " ---------------------------------------------------------------------------}}}
 
 " Copilot ==================================================================={{{
@@ -181,8 +190,8 @@ set smartcase
 set smartindent
 set autoindent
 set expandtab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " ---------------------------------------------------------------------------}}}
 " display unvisible symbols ================================================={{{
@@ -259,16 +268,17 @@ endfunction
 
 " ---------------------------------------------------------------------------}}}
 
-" key mappings =============================================================={{{
+" key mappingos =============================================================={{{
 
 " <F1> ~ <F12> =============================================================={{{
-nnoremap <F1>  :NERDTreeToggle<cr>
-nnoremap <F2>  :bp<cr>
-nnoremap <F3>  :bn<cr>
-nnoremap <F4>  :call sy#jump#prev_hunk(v:count1)<cr>zvzz
-nnoremap <F5>  :call sy#jump#next_hunk(v:count1)<cr>zvzz
+nnoremap <F1>  :bp<cr>
+nnoremap <F2>  :bn<cr>
+nnoremap <F3>  :call sy#jump#prev_hunk(v:count1)<cr>zvzz
+nnoremap <F4>  :call sy#jump#next_hunk(v:count1)<cr>zvzz
+nnoremap <F5>  :YcmCompleter GoTo<cr>
 nnoremap <F6>  :call sy#fold#toggle()<cr>zvzz
 nnoremap <F7>  :set paste!<cr>
+nnoremap <F8>  :NERDTreeToggle<cr>
 nnoremap <F12> :call P4Reopen()<cr>
 "map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
@@ -309,17 +319,17 @@ nnoremap <space> :noh<cr>
 
 " ---------------------------------------------------------------------------}}}
 
-" Completely disable folding
-set nofoldenable
-set foldmethod=manual
-
-" For LaTeX files specifically
-autocmd FileType tex setlocal nofoldenable foldmethod=manual
-
-let g:vimtex_fold_enabled = 0
-
-let g:Tex_FoldedSections = 0
-let g:Tex_FoldedEnvironments = 0
-let g:Tex_FoldedMisc = 0
-
-set conceallevel=0
+"" Completely disable folding
+"set nofoldenable
+"set foldmethod=manual
+"
+"" For LaTeX files specifically
+"autocmd FileType tex setlocal nofoldenable foldmethod=manual
+"
+"let g:vimtex_fold_enabled = 0
+"
+"let g:Tex_FoldedSections = 0
+"let g:Tex_FoldedEnvironments = 0
+"let g:Tex_FoldedMisc = 0
+"
+"set conceallevel=0
