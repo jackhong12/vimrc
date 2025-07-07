@@ -125,8 +125,8 @@ nnoremap gc :YcmCompleter GoToCallers<cr>
 "   - Jump back
 "       <crl> + o
 
-# Setup for compile flags
-# let g:command_config_path='/path/to/compile_commands.json'
+" Setup for compile flags
+" let g:command_config_path='/path/to/compile_commands.json'
 
 " ---------------------------------------------------------------------------}}}
 
