@@ -137,6 +137,16 @@ Plugin 'github/copilot.vim'
 
 " ---------------------------------------------------------------------------}}}
 
+" vim-markdown: Markdown Syntax ============================================={{{
+"Plugin 'preservim/vim-markdown'
+
+" ---------------------------------------------------------------------------}}}
+
+" vim-polyglot: Multi-language support for markdown ========================={{{
+"Plugin 'sheerun/vim-polyglot'
+
+" ---------------------------------------------------------------------------}}}
+
 " ---------------------------------------------------------------------------}}}
 
 " basic options ============================================================={{{
@@ -336,3 +346,18 @@ nnoremap <space> :noh<cr>
 "let g:Tex_FoldedMisc = 0
 "
 "set conceallevel=0
+
+
+function! ExtractCppSnippetToBuffer()
+  let l:start = search('```cpp', 'bnW')
+  let l:end = search('```', 'nW')
+  if l:start > 0 && l:end > l:start
+    execute l:start.','.l:end.'copy $'
+    belowright new tmp_snippet.cpp
+    put
+  else
+    echo "No cpp snippet found"
+  endif
+endfunction
+
+nnoremap <leader>yc :call ExtractCppSnippetToBuffer()<CR>
