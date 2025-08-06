@@ -135,6 +135,10 @@ nnoremap gc :YcmCompleter GoToCallers<cr>
 "   :Copilot setup
 Plugin 'github/copilot.vim'
 
+" Map <C-J> to accept Copilot suggestions
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 " ---------------------------------------------------------------------------}}}
 
 " vim-markdown: Markdown Syntax ============================================={{{
