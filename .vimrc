@@ -191,6 +191,7 @@ set showcmd      " show commands in left bottom corner
 set backupdir=~/.cache/vim/backup//
 set directory=~/.cache/vim/swap//
 set undodir=~/.cache/vim/undo//
+set colorcolumn=72
 "set digraph
 " TODO
 "set dictionary=
