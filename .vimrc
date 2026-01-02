@@ -192,6 +192,11 @@ set backupdir=~/.cache/vim/backup//
 set directory=~/.cache/vim/swap//
 set undodir=~/.cache/vim/undo//
 set colorcolumn=72
+
+" show trailing spaces
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
 "set digraph
 " TODO
 "set dictionary=

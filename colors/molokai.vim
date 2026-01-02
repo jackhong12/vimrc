@@ -108,6 +108,7 @@ hi WildMenu        guifg=#66D9EF guibg=#000000
 
 hi TabLineFill     guifg=#1B1D1E guibg=#1B1D1E
 hi TabLine         guibg=#1B1D1E guifg=#808080 gui=none
+hi ExtraWhitespace ctermbg=red   guibg=red
 
 if s:molokai_original == 1
    hi Normal          guifg=#F8F8F2 guibg=#272822
