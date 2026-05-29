@@ -1,0 +1,23 @@
+name: Install Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies for installer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lsb-release vim curl git wget build-essential cmake python3-dev
+
+      - name: Run install script
+        run: |
+          chmod +x ./install.sh
+          ./install.sh
