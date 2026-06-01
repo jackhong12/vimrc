@@ -43,3 +43,44 @@
 "        set conceallevel=0
 "    endif
 "endfunction
+
+" markdown: use gf to search target file from current git root
+if has("autocmd")
+    augroup markdown_git_root_gf
+        autocmd!
+        autocmd BufNewFile,BufRead *.md call s:enable_markdown_git_root_gf()
+    augroup END
+endif
+
+function! s:enable_markdown_git_root_gf() abort
+    nnoremap <buffer> <silent> gf :call <SID>markdown_git_root_gf()<CR>
+endfunction
+
+function! s:markdown_git_root_gf() abort
+    let l:target = expand('<cfile>')
+    if empty(l:target)
+        return
+    endif
+
+    let l:git_root = systemlist('git -C ' . shellescape(expand('%:p:h')) . ' rev-parse --show-toplevel')
+    if v:shell_error != 0 || empty(l:git_root)
+        execute 'normal! gf'
+        return
+    endif
+
+    let l:matches = globpath(l:git_root[0], '**/' . escape(l:target, '[]*?{}'), 0, 1)
+
+    " fallback: if no match and target has no extension, try .md
+    if empty(l:matches) && fnamemodify(l:target, ':e') ==# ''
+        let l:matches = globpath(l:git_root[0], '**/' . escape(l:target . '.md', '[]*?{}'), 0, 1)
+    endif
+
+    if empty(l:matches)
+        echohl WarningMsg
+        echom 'File not found in git root: ' . l:target
+        echohl None
+        return
+    endif
+
+    execute 'edit ' . fnameescape(l:matches[0])
+endfunction
