@@ -3,9 +3,15 @@
 This repository contains my vim settings.
 
 ## Install
-```bash
-./install.sh
-```
+- For Linux:
+    ```bash
+    ./install.sh
+    ```
+
+- For Windows:
+    ```powershell
+    ./install.ps1
+    ```
 
 ## Key Mappings
 Type `:map` to check key mappings in vim.
