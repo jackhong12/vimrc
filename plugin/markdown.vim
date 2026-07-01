@@ -62,6 +62,19 @@ function! s:markdown_git_root_gf() abort
         return
     endif
 
+    " handle home/absolute path directly (e.g. ~/notes/todo.md)
+    if l:target =~# '^\~/' || l:target =~# '^/'
+        let l:absolute_target = expand(l:target)
+        if filereadable(l:absolute_target) || isdirectory(l:absolute_target)
+            execute 'edit ' . fnameescape(l:absolute_target)
+        else
+            echohl WarningMsg
+            echom 'File not found: ' . l:target
+            echohl None
+        endif
+        return
+    endif
+
     let l:git_root = systemlist('git -C ' . shellescape(expand('%:p:h')) . ' rev-parse --show-toplevel')
     if v:shell_error != 0 || empty(l:git_root)
         execute 'normal! gf'
