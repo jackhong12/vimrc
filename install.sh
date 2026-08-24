@@ -21,7 +21,7 @@ prun () {
 }
 # }}} commands
 
-prun check_install vim curl git wget
+prun check_install vim curl git wget clangd
 
 # use vundle to manage plugins
 vundlepath=${HOME}/.vim/bundle/vundle
