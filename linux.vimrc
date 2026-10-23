@@ -151,6 +151,8 @@ let g:copilot_no_tab_map = v:true
 
 " ---------------------------------------------------------------------------}}}
 
+Plugin 'antiagainst/vim-tablegen'
+
 " ---------------------------------------------------------------------------}}}
 
 " basic options ============================================================={{{
@@ -299,14 +301,14 @@ nnoremap <F2>  :bn<cr>
 nnoremap <F3>  :call sy#jump#prev_hunk(v:count1)<cr>zvzz
 nnoremap <F4>  :call sy#jump#next_hunk(v:count1)<cr>zvzz
 nnoremap <F5>  :YcmCompleter GoTo<cr>
-nnoremap <F6>  :call sy#fold#toggle()<cr>zvzz
+nnoremap <F6>  :call FoldToggle()<cr>zvzz
 nnoremap <F7>  :set paste!<cr>
-nnoremap <F8>  :NERDTreeToggle<cr>
-nnoremap <F12> :call P4Reopen()<cr>
+"nnoremap <F8>  :NERDTreeToggle<cr>
+"nnoremap <F12> :call P4Reopen()<cr>
 "map <F6>      :help <C-R><C-W><CR>
 "   <F7> I reserve F7 for SnippetsEmu plugin.
 "   <F8> I reserve F8 for SuperTab plugin.
-map <F9> <ESC>:set paste!<CR>
+"map <F9> <ESC>:set paste!<CR>
 "map <F9> :set paste<CR>i
 map <ESC>[H 0
 map <ESC>Ow $
@@ -371,3 +373,43 @@ function! ExtractCppSnippetToBuffer()
 endfunction
 
 nnoremap <leader>yc :call ExtractCppSnippetToBuffer()<CR>
+
+" FoldToggle: cycle no-fold -> indent-fold -> signify-fold -> no-fold ======={{{
+let s:fold_state = 0
+
+function! FoldToggle()
+  if s:fold_state == 0
+    " state 0 -> 1: use indent folding
+    setlocal foldmethod=indent
+    setlocal foldenable
+    normal! zM
+    let s:fold_state = 1
+    echo 'FoldToggle: indent'
+  elseif s:fold_state == 1
+    " state 1 -> 2: drop indent folding, use signify folding
+    setlocal foldmethod=manual
+    normal! zE
+    SignifyFold!
+    let s:fold_state = 2
+    echo 'FoldToggle: signify'
+  else
+    " state 2 -> 0: drop signify folding, back to no folding
+    SignifyFold!
+    setlocal nofoldenable
+    let s:fold_state = 0
+    echo 'FoldToggle: none'
+  endif
+endfunction
+
+function! GitFold()
+  setlocal foldmethod=manual
+  setlocal foldenable
+  call sy#fold#enable(0)
+endfunction
+
+command! GitFold call GitFold()
+
+" ---------------------------------------------------------------------------}}}
+
+set foldmethod=indent
+set nofoldenable
