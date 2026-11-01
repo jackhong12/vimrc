@@ -496,5 +496,5 @@ command! GitFold call GitFold()
 
 " ---------------------------------------------------------------------------}}}
 
-set foldmethod=indent
-set nofoldenable
+"set foldmethod=indent
+"set nofoldenable

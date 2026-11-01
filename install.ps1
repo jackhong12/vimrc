@@ -53,6 +53,14 @@ if (-not(Test-Path "$HOME\vimfiles\colors")) {
 }
 run cp colors/molokai.vim "$HOME\vimfiles\colors\molokai.vim"
 
+# Copy plugin scripts
+if (-not(Test-Path "$HOME\vimfiles\plugin")) {
+    run mkdir "$HOME\vimfiles\plugin"
+}
+foreach ($f in Get-ChildItem "plugin\*.vim") {
+    run cp $f.FullName "$HOME\vimfiles\plugin\$($f.Name)"
+}
+
 run cp settings.vimrc "$HOME/_vimrc"
 run $vim +PluginInstall +qall
 
