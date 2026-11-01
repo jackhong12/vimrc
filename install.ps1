@@ -53,7 +53,7 @@ if (-not(Test-Path "$HOME\vimfiles\colors")) {
 }
 run cp colors/molokai.vim "$HOME\vimfiles\colors\molokai.vim"
 
-run cp windows.vimrc "$HOME/_vimrc"
+run cp settings.vimrc "$HOME/_vimrc"
 run $vim +PluginInstall +qall
 
 $vimrc_path = (& $vim --version | Select-String "  user vimrc file").ToString().Split(":")[1].Trim()

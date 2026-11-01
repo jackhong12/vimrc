@@ -32,92 +32,167 @@
 
 " ---------------------------------------------------------------------------}}}
 
-" plugins ==================================================================={{{
+" OS detection
+let g:is_windows = has('win32')
+let g:is_mac = has('mac') || has('macunix')
+let g:is_linux = has('unix') && !g:is_mac
+
 let mapleader=',' " set leader key
-set nocompatible  " be iMproved, required
-filetype off      " required
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-filetype plugin indent on
-Plugin 'gmarik/vundle'
+
+
+" plugins ==================================================================={{{
+let g:use_rainbow    = 0
+let g:use_airline    = 0
+let g:use_devicons   = 0
+let g:use_signify    = 0
+let g:use_supertab   = 0
+let g:use_indentline = 0
+let g:use_tabular    = 0
+let g:use_nerdtree   = 0
+let g:use_tmux       = 0
+let g:use_perforce   = 0
+let g:use_easyalign  = 0
+let g:use_ycm        = 0
+let g:use_copilot    = 0
+let g:use_tablegen   = 0
+
+" Plugin switches: 1 = enabled, 0 = disabled (Linux default: all on)
+if g:is_linux
+  " linux settings
+  set nocompatible  " be iMproved, required
+  filetype off      " required
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+  filetype plugin indent on
+  Plugin 'gmarik/vundle'
+
+  let g:use_rainbow    = 1
+  let g:use_airline    = 1
+  let g:use_devicons   = 1
+  let g:use_signify    = 1
+  let g:use_supertab   = 1
+  let g:use_indentline = 1
+  let g:use_tabular    = 1
+  let g:use_nerdtree   = 1
+  let g:use_tmux       = 1
+  let g:use_perforce   = 1
+  let g:use_easyalign  = 1
+  let g:use_ycm        = 1
+  let g:use_copilot    = 1
+  let g:use_tablegen   = 1
+elseif g:is_windows
+  " windows settings
+  set nocompatible
+  filetype off
+  set rtp+=~/vimfiles/bundle/Vundle.vim
+  call vundle#begin()
+
+  let g:use_rainbow    = 1
+  let g:use_airline    = 1
+  let g:use_signify    = 1
+endif
 
 " vim-rainbow ==============================================================={{{
-Plugin 'frazrepo/vim-rainbow'
-au FileType c,cpp,objc,objcpp call rainbow#load()
+if g:use_rainbow
+  Plugin 'frazrepo/vim-rainbow'
+  au FileType c,cpp,objc,objcpp call rainbow#load()
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " vim-airline ==============================================================={{{
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-let g:airline_theme                        = 'badwolf'
-let g:airline_powerline_fonts              = 1
-let g:airline#extensions#tabline#enabled   = 1
-let g:airline#extensions#tabline#formatter = 'default'
+if g:use_airline
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  let g:airline_theme                        = 'badwolf'
+  let g:airline_powerline_fonts              = 1
+  let g:airline#extensions#tabline#enabled   = 1
+  let g:airline#extensions#tabline#formatter = 'default'
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " vim-devicons =============================================================={{{
-Plugin 'ryanoasis/vim-devicons'
+if g:use_devicons
+  Plugin 'ryanoasis/vim-devicons'
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " vim-signify ==============================================================={{{
-Plugin 'mhinz/vim-signify'
+if g:use_signify
+  Plugin 'mhinz/vim-signify'
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " supertab =================================================================={{{
-Plugin 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-n>"
+if g:use_supertab
+  Plugin 'ervandew/supertab'
+  let g:SuperTabDefaultCompletionType = "<c-n>"
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " indentLine================================================================={{{
-Plugin 'Yggdroot/indentLine'
-let g:indentLine_char_list = ['┊']
-let g:indentLine_color_term = 239
+if g:use_indentline
+  Plugin 'Yggdroot/indentLine'
+  let g:indentLine_char_list = ['┊']
+  let g:indentLine_color_term = 239
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " tabular ==================================================================={{{
 " usage:
 "     :Tab/<key>
-Plugin 'godlygeek/tabular'
+if g:use_tabular
+  Plugin 'godlygeek/tabular'
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " nerdtree =================================================================={{{
-Plugin 'preservim/nerdtree'
+if g:use_nerdtree
+  Plugin 'preservim/nerdtree'
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " tmux-complete ============================================================={{{
-Bundle 'wellle/tmux-complete.vim'
+if g:use_tmux
+  Bundle 'wellle/tmux-complete.vim'
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " vim-perforce =============================================================={{{
-Bundle 'nfvs/vim-perforce'
 " :P4edit
 " :P4revert
 " :P4movetocl
+if g:use_perforce
+  Bundle 'nfvs/vim-perforce'
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " vim-easy-align ============================================================{{{
-Plugin 'junegunn/vim-easy-align'
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
+if g:use_easyalign
+  Plugin 'junegunn/vim-easy-align'
+  nmap ga <Plug>(EasyAlign)
+  xmap ga <Plug>(EasyAlign)
+endif
 
 " ---------------------------------------------------------------------------}}}
 
 " YouCompleteMe: Auto-Complete =============================================={{{
-Plugin 'ycm-core/YouCompleteMe'
-set completeopt-=preview " Don't show preview window
+if g:use_ycm
+  Plugin 'ycm-core/YouCompleteMe'
+  set completeopt-=preview " Don't show preview window
 
-nnoremap gd :YcmCompleter GoTo<cr>
-nnoremap gc :YcmCompleter GoToCallers<cr>
+  nnoremap gd :YcmCompleter GoTo<cr>
+  nnoremap gc :YcmCompleter GoToCallers<cr>
+endif
 
 " Short Key:
 "   - Auto jump
@@ -133,11 +208,13 @@ nnoremap gc :YcmCompleter GoToCallers<cr>
 " Copilot ==================================================================={{{
 " Insall:
 "   :Copilot setup
-Plugin 'github/copilot.vim'
+if g:use_copilot
+  Plugin 'github/copilot.vim'
 
-" Map <C-J> to accept Copilot suggestions
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
+  " Map <C-J> to accept Copilot suggestions
+  imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+  let g:copilot_no_tab_map = v:true
+endif
 
 " ---------------------------------------------------------------------------}}}
 
@@ -151,9 +228,17 @@ let g:copilot_no_tab_map = v:true
 
 " ---------------------------------------------------------------------------}}}
 
-Plugin 'antiagainst/vim-tablegen'
+if g:use_tablegen
+  Plugin 'antiagainst/vim-tablegen'
+endif
 
 " ---------------------------------------------------------------------------}}}
+
+if g:is_linux
+elseif g:is_windows
+  call vundle#end()
+  filetype plugin indent on " Re-enable filetype detection
+endif
 
 " basic options ============================================================={{{
 " global options

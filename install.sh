@@ -29,7 +29,7 @@ if [ ! -d $vundlepath ]; then
     prun git clone https://github.com/VundleVim/Vundle.vim.git $vundlepath
 fi
 
-prun ln -sf `pwd`/linux.vimrc ~/.vimrc
+prun ln -sf `pwd`/settings.vimrc ~/.vimrc
 mkdir ~/.vim/plugin -p
 for f in `pwd`/plugin/*.vim; do
     prun ln -sf $f ~/.vim/plugin
