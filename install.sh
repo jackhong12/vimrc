@@ -1,15 +1,24 @@
 #!/bin/bash
 
-# Configuration
-isYCM=1 # Install YCM
-
-distribution=`lsb_release -a 2> /dev/null | grep Description | sed 's|Description:[\t ]*||g'`
-
 # commands {{{
+is_mac () {
+  [[ "$(uname -s)" == "Darwin" ]]
+}
+
+is_linux() {
+  [[ "$(uname -s)" == "Linux" ]]
+}
+
 check_install () {
   for exe in "$@"; do
     if ! command -v $exe &> /dev/null; then
-      sudo apt-get install -y $exe
+      if is_mac; then
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install $exe
+      elif is_linux; then
+        sudo apt-get install -y $exe
+      else
+        echo "Unknown OS"
+      fi
     fi
   done
 }
@@ -21,7 +30,20 @@ prun () {
 }
 # }}} commands
 
-prun check_install vim curl git wget clangd
+# Configuration
+if is_linux; then
+  distribution=`lsb_release -a 2> /dev/null | grep Description | sed 's|Description:[\t ]*||g'`
+  isYCM=1 # Install YCM
+elif is_mac; then
+  isYCM=0
+fi
+
+prun check_install vim curl git wget
+if is_mac; then
+  prun check_install llvm
+elif is_linux; then
+  prun check_install clangd
+fi
 
 # use vundle to manage plugins
 vundlepath=${HOME}/.vim/bundle/vundle
@@ -30,12 +52,12 @@ if [ ! -d $vundlepath ]; then
 fi
 
 prun ln -sf `pwd`/settings.vimrc ~/.vimrc
-mkdir ~/.vim/plugin -p
+prun mkdir -p ~/.vim/plugin
 for f in `pwd`/plugin/*.vim; do
     prun ln -sf $f ~/.vim/plugin
 done
 
-prun mkdir ~/.vim/colors -p
+prun mkdir -p ~/.vim/colors
 for f in `pwd`/colors/*.vim; do
     prun ln -sf $f ~/.vim/colors
 done
@@ -49,7 +71,11 @@ prun mkdir -p ~/.cache/vim/undo
 
 # Build YCM
 if [ $isYCM -eq 1 ]; then
-  prun check_install build-essential cmake vim-nox python3-dev
+  if is_linux; then
+    prun check_install build-essential cmake vim-nox python3-dev
+  elif is_mac; then
+    prun check_install cmake python@3.14
+  fi
   prun pushd ~/.vim/bundle/YouCompleteMe
   prun ./install.py --clangd-completer
   prun popd

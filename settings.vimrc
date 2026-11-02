@@ -57,7 +57,7 @@ let g:use_copilot    = 0
 let g:use_tablegen   = 0
 
 " Plugin switches: 1 = enabled, 0 = disabled (Linux default: all on)
-if g:is_linux
+if g:is_linux || g:is_mac
   " linux settings
   set nocompatible  " be iMproved, required
   filetype off      " required
@@ -77,7 +77,7 @@ if g:is_linux
   let g:use_tmux       = 1
   let g:use_perforce   = 1
   let g:use_easyalign  = 1
-  let g:use_ycm        = 1
+  let g:use_ycm        = 0
   let g:use_copilot    = 1
   let g:use_tablegen   = 1
 elseif g:is_windows
@@ -234,7 +234,7 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-if g:is_linux
+if g:is_linux || g:is_mac
 elseif g:is_windows
   call vundle#end()
   filetype plugin indent on " Re-enable filetype detection
