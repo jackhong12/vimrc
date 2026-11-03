@@ -55,6 +55,7 @@ let g:use_easyalign  = 0
 let g:use_ycm        = 0
 let g:use_copilot    = 0
 let g:use_tablegen   = 0
+let g:use_fugitive   = 0
 
 " Plugin switches: 1 = enabled, 0 = disabled (Linux default: all on)
 if g:is_linux || g:is_mac
@@ -80,6 +81,7 @@ if g:is_linux || g:is_mac
   let g:use_ycm        = 0
   let g:use_copilot    = 1
   let g:use_tablegen   = 1
+  let g:use_fugitive   = 1
 elseif g:is_windows
   " windows settings
   set nocompatible
@@ -228,17 +230,26 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
+" vim-fugitive: Git wrapper for Vim ========================================={{{
+" :Git diff: show git diff in vim
+
+if g:use_fugitive
+  Plugin 'tpope/vim-fugitive'
+endif
+
+" vim-fugitive --------------------------------------------------------------}}}
+
 if g:use_tablegen
   Plugin 'antiagainst/vim-tablegen'
 endif
-
-" ---------------------------------------------------------------------------}}}
 
 if g:is_linux || g:is_mac
 elseif g:is_windows
   call vundle#end()
   filetype plugin indent on " Re-enable filetype detection
 endif
+
+" ---------------------------------------------------------------------------}}}
 
 " basic options ============================================================={{{
 " global options
