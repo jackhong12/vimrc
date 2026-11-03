@@ -91,7 +91,7 @@ else
 endif
 call vundle#begin()
 
-" vim-rainbow ==============================================================={{{
+" vim-rainbow: Color Matching Brackets ======================================{{{
 if g:use_rainbow
   Plugin 'frazrepo/vim-rainbow'
   au FileType c,cpp,objc,objcpp call rainbow#load()
@@ -99,7 +99,7 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-" vim-airline ==============================================================={{{
+" vim-airline: Enhanced Status Line ========================================={{{
 if g:use_airline
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
@@ -111,21 +111,28 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-" vim-devicons =============================================================={{{
+" vim-devicons: File Type Icons ============================================={{{
 if g:use_devicons
   Plugin 'ryanoasis/vim-devicons'
 endif
 
 " ---------------------------------------------------------------------------}}}
 
-" vim-signify ==============================================================={{{
+" vim-signify: Git Diff Signs ==============================================={{{
 if g:use_signify
   Plugin 'mhinz/vim-signify'
 endif
 
+function! GitFold()
+  setlocal foldmethod=manual
+  setlocal foldenable
+  call sy#fold#enable(0)
+endfunction
+
+command! GitFold call GitFold()
 " ---------------------------------------------------------------------------}}}
 
-" supertab =================================================================={{{
+" supertab: Tab Auto-Complete ==============================================={{{
 if g:use_supertab
   Plugin 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -133,7 +140,7 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-" indentLine================================================================={{{
+" indentLine: Indentation Guides ============================================{{{
 if g:use_indentline
   Plugin 'Yggdroot/indentLine'
   let g:indentLine_char_list = ['┊']
@@ -142,7 +149,7 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-" tabular ==================================================================={{{
+" tabular: Align Text ======================================================={{{
 " usage:
 "     :Tab/<key>
 if g:use_tabular
@@ -151,21 +158,21 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-" nerdtree =================================================================={{{
+" nerdtree: File Explorer ==================================================={{{
 if g:use_nerdtree
   Plugin 'preservim/nerdtree'
 endif
 
 " ---------------------------------------------------------------------------}}}
 
-" tmux-complete ============================================================={{{
+" tmux-complete: Complete from Tmux Panes ==================================={{{
 if g:use_tmux
   Bundle 'wellle/tmux-complete.vim'
 endif
 
 " ---------------------------------------------------------------------------}}}
 
-" vim-perforce =============================================================={{{
+" vim-perforce: Perforce Integration ========================================{{{
 " :P4edit
 " :P4revert
 " :P4movetocl
@@ -175,7 +182,7 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-" vim-easy-align ============================================================{{{
+" vim-easy-align: Align Text Interactively =================================={{{
 if g:use_easyalign
   Plugin 'junegunn/vim-easy-align'
   nmap ga <Plug>(EasyAlign)
@@ -204,7 +211,7 @@ endif
 
 " ---------------------------------------------------------------------------}}}
 
-" Copilot ==================================================================={{{
+" Copilot: AI Code Suggestions =============================================={{{
 " Insall:
 "   :Copilot setup
 if g:use_copilot
@@ -493,13 +500,6 @@ function! FoldToggle()
   endif
 endfunction
 
-function! GitFold()
-  setlocal foldmethod=manual
-  setlocal foldenable
-  call sy#fold#enable(0)
-endfunction
-
-command! GitFold call GitFold()
 
 " ---------------------------------------------------------------------------}}}
 
