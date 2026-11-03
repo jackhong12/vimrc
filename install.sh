@@ -33,7 +33,7 @@ prun () {
 # Configuration
 if is_linux; then
   distribution=`lsb_release -a 2> /dev/null | grep Description | sed 's|Description:[\t ]*||g'`
-  isYCM=1 # Install YCM
+  isYCM=0 # Install YCM
 elif is_mac; then
   isYCM=0
 fi
@@ -46,7 +46,7 @@ elif is_linux; then
 fi
 
 # use vundle to manage plugins
-vundlepath=${HOME}/.vim/bundle/vundle
+vundlepath=${HOME}/.vim/bundle/Vundle.vim
 if [ ! -d $vundlepath ]; then
     prun git clone https://github.com/VundleVim/Vundle.vim.git $vundlepath
 fi

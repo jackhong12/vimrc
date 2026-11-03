@@ -60,13 +60,6 @@ let g:use_fugitive   = 0
 " Plugin switches: 1 = enabled, 0 = disabled (Linux default: all on)
 if g:is_linux || g:is_mac
   " linux settings
-  set nocompatible  " be iMproved, required
-  filetype off      " required
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
-  filetype plugin indent on
-  Plugin 'gmarik/vundle'
-
   let g:use_rainbow    = 1
   let g:use_airline    = 1
   let g:use_devicons   = 1
@@ -84,15 +77,19 @@ if g:is_linux || g:is_mac
   let g:use_fugitive   = 1
 elseif g:is_windows
   " windows settings
-  set nocompatible
-  filetype off
-  set rtp+=~/vimfiles/bundle/Vundle.vim
-  call vundle#begin()
-
   let g:use_rainbow    = 1
   let g:use_airline    = 1
   let g:use_signify    = 1
 endif
+
+set nocompatible
+filetype off
+if g:is_windows
+  set rtp+=~/vimfiles/bundle/Vundle.vim
+else
+  set rtp+=~/.vim/bundle/Vundle.vim
+endif
+call vundle#begin()
 
 " vim-rainbow ==============================================================={{{
 if g:use_rainbow
@@ -239,15 +236,14 @@ endif
 
 " vim-fugitive --------------------------------------------------------------}}}
 
+" vim-tablegen: TableGen Syntax Highlight ==================================={{{
 if g:use_tablegen
   Plugin 'antiagainst/vim-tablegen'
 endif
+" vim-tablegen --------------------------------------------------------------}}}
 
-if g:is_linux || g:is_mac
-elseif g:is_windows
-  call vundle#end()
-  filetype plugin indent on " Re-enable filetype detection
-endif
+call vundle#end()
+filetype plugin indent on " Re-enable filetype detection
 
 " ---------------------------------------------------------------------------}}}
 
