@@ -28,15 +28,38 @@ prun () {
   printf "\033[0;32m$ $cmd\033[0m\n"
   eval "$cmd"
 }
+
+print_help () {
+  echo "Usage: $0 [options]"
+  echo ""
+  echo "Options:"
+  echo "  --ycm       Build and install YouCompleteMe"
+  echo "  -h, --help  Show this help message and exit"
+}
 # }}} commands
 
 # Configuration
+isYCM=0 # Install YCM
 if is_linux; then
   distribution=`lsb_release -a 2> /dev/null | grep Description | sed 's|Description:[\t ]*||g'`
-  isYCM=0 # Install YCM
-elif is_mac; then
-  isYCM=0
 fi
+
+for arg in "$@"; do
+  case "$arg" in
+    --ycm)
+      isYCM=1
+      ;;
+    -h|--help)
+      print_help
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $arg"
+      print_help
+      exit 1
+      ;;
+  esac
+done
 
 prun check_install vim curl git wget
 if is_mac; then
